@@ -18,4 +18,63 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+
+  /* Disable user interactions like text selection or right-clicking */
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
 }
+
+/* CLOVER VIEWER STYLES */
+.clover-viewer {
+  /* Make viewer take up the whole screen */
+  width: 100%;
+  height: 100%;
+
+  /* TODO: Why? */
+  div[role="radiogroup"] {
+    overflow: hidden;
+  }
+
+  /* Fix "More Information" colors */
+  button[role="switch"][data-state="unchecked"] {
+    background-color: #433a3f;
+    span[data-state="unchecked"] {
+      background-color: #095cff;
+    }
+  }
+
+  /* Hide Controls */
+  div[data-testid="clover-iiif-image-openseadragon-controls"] {
+    display: none;
+  }
+
+  /* Hide the search button in the media navigator */
+  .clover-viewer-media-wrapper > div > div > button {
+    display: none;
+  }
+
+  /* Hide header
+  .clover-viewer-header {
+    display: none;
+  } */
+}
+/* END CLOVER VIEWER STYLES */
+
+/* ANIMATIONS */
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the attract mode container */
+.attract-mode {
+  animation: fadeIn 5s ease-in-out; /* Adjust duration and timing function as needed */
+}
+/* END ANIMATIONS */

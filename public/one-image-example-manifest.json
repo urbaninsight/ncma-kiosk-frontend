@@ -1,0 +1,98 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "http://localhost:3000/one-image-example-manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": ["Single Image Example"]
+  },
+  "items": [
+    {
+      "id": "https://iiif.io/api/cookbook/recipe/0001-mvm-image/canvas/p1",
+      "type": "Canvas",
+      "height": 3489,
+      "width": 3916,
+      "items": [
+        {
+          "id": "https://iiif.io/api/cookbook/recipe/0001-mvm-image/page/p1/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif/canvas/access/0/annotation/0",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif/canvas/access/0",
+              "body": {
+                "id": "https://iiif.dc.library.northwestern.edu/iiif/3/3d42aceb-73ad-44cc-817e-459993a50be6/full/600,/0/default.jpg",
+                "type": "Image",
+                "format": "image/tiff",
+                "height": 3489,
+                "width": 3916,
+                "service": [
+                  {
+                    "@id": "https://iiif.dc.library.northwestern.edu/iiif/3/3d42aceb-73ad-44cc-817e-459993a50be6",
+                    "@type": "ImageService2",
+                    "profile": "http://iiif.io/api/image/2/level2.json"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/page/p2/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/annotation/p0002-tag",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": {
+                "type": "TextualBody",
+                "value": "Town Creek Aqueduct",
+                "language": "en",
+                "format": "text/plain"
+              },
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/canvas.json",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 3385,
+                  "y": 1464
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/page/p2/2",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/annotation/p0003-tag",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": {
+                "type": "TextualBody",
+                "value": "Town Creek Aqueduct",
+                "language": "en",
+                "format": "text/plain"
+              },
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://iiif.io/api/cookbook/recipe/0135-annotating-point-in-canvas/canvas.json",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 3000,
+                  "y": 1000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
