@@ -6,5 +6,5 @@ export interface MuseumObjectStateContext {
 }
 
 export interface MuseumObjectState {
-  manifestData?: Manifest; // TODO: look online for iiif manifest ts types
+  manifestData?: Manifest;
 }

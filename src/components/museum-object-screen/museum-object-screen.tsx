@@ -1,14 +1,15 @@
 "use client";
 
+import { MuseumObjectContext } from "@/context/museum-object-context";
+import { MuseumObjectState } from "@/interfaces/MuseumObjectContext";
+import { Manifest } from "@iiif/presentation-3";
 import { useContext, useEffect } from "react";
 import AttractMode from "../attract-mode/attract-mode";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
-import { MuseumObjectContext } from "@/context/museum-object-context";
-import { Manifest } from "@iiif/presentation-3";
-import { MuseumObjectState } from "@/interfaces/MuseumObjectContext";
 
 export default function MuseumObjectScreen() {
-  const { museumObjectState, setMuseumObjectState } = useContext(MuseumObjectContext);
+  const { museumObjectState, setMuseumObjectState } =
+    useContext(MuseumObjectContext);
 
   // Fetch manifest data and store it in context
   useEffect(() => {
@@ -18,10 +19,12 @@ export default function MuseumObjectScreen() {
       fetch(iiifUrl)
         .then((response) => response.json())
         .then((data: Manifest) => {
-          const newState: MuseumObjectState = { ...museumObjectState, manifestData: data };
+          const newState: MuseumObjectState = {
+            ...museumObjectState,
+            manifestData: data,
+          };
           setMuseumObjectState(newState);
-        }
-      );
+        });
     } catch (error) {
       console.error(error);
     }

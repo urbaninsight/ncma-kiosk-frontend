@@ -1,22 +1,33 @@
 "use client";
 
-import { MuseumObjectState, MuseumObjectStateContext } from "@/interfaces/MuseumObjectContext";
-import { createContext, useState} from "react";
+import {
+  MuseumObjectState,
+  MuseumObjectStateContext,
+} from "@/interfaces/MuseumObjectContext";
+import { createContext, useState } from "react";
 
 const initialMuseumObjectState: MuseumObjectState = {
   manifestData: undefined,
-}
+};
 
 export const MuseumObjectContext = createContext<MuseumObjectStateContext>({
   museumObjectState: initialMuseumObjectState,
   setMuseumObjectState: () => {},
 });
 
-export default function MuseumObjectContextWrapper({ children }: { children: React.ReactNode }) {
-  const [museumObjectState, setMuseumObjectState] = useState(initialMuseumObjectState);
+export default function MuseumObjectContextWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [museumObjectState, setMuseumObjectState] = useState(
+    initialMuseumObjectState,
+  );
 
   return (
-    <MuseumObjectContext.Provider value={{ museumObjectState, setMuseumObjectState }}>
+    <MuseumObjectContext.Provider
+      value={{ museumObjectState, setMuseumObjectState }}
+    >
       {children}
     </MuseumObjectContext.Provider>
   );

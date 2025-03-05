@@ -35,7 +35,7 @@ export default function AttractModeContent() {
 
     inactivityTimerRef.current = setTimeout(
       startAttractMode,
-      ATTRACT_MODE_TIMEOUT_MILLISECONDS
+      ATTRACT_MODE_TIMEOUT_MILLISECONDS,
     );
   };
 
@@ -71,15 +71,15 @@ export default function AttractModeContent() {
   // TODO: Fade out
   // TODO: Reset IIIF to default state on animation end
   return attractModeActive ? (
-    <div className="attract-mode absolute top-0 left-0 h-[100dvh] w-[100dvw] flex flex-col justify-center items-center gap-y-8 bg-black text-white z-[10] cursor-pointer">
+    <div className="attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white">
       {/* Video BG */}
-      <div className="absolute top-0 left-0 h-[100dvh] w-[100dvw]">
+      <div className="absolute left-0 top-0 h-[100dvh] w-[100dvw]">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="object-cover h-full w-full"
+          className="h-full w-full object-cover"
         >
           {/* TODO: make dynamic */}
           <source src="/test_vid.mp4" type="video/mp4" />
@@ -87,16 +87,16 @@ export default function AttractModeContent() {
       </div>
 
       {/* Darkened Overlay over Video so text is more legible */}
-      <div className="absolute top-0 left-0 h-[100dvh] w-[100dvw] bg-black opacity-30 z-[10]"></div>
+      <div className="absolute left-0 top-0 z-[10] h-[100dvh] w-[100dvw] bg-black opacity-30"></div>
 
       {/* Title + Button */}
       {!!museumObjectState.manifestData?.label?.["en"]?.length && (
         <>
-          <h1 className="text-7xl font-bold animate-pulse text-center max-w-6xl z-[11]">
+          <h1 className="z-[11] max-w-6xl animate-pulse text-center text-7xl font-bold">
             {/* TODO: support multilingual */}
             {museumObjectState.manifestData?.label["en"] ?? ""}
           </h1>
-          <p className="animate-pulse text-3xl font-bold uppercase border-4 border-white px-5 py-2 hover:text-gray-500 hover:border-gray-500 mb-5">
+          <p className="mb-5 animate-pulse border-4 border-white px-5 py-2 text-3xl font-bold uppercase hover:border-gray-500 hover:text-gray-500">
             Tap to Begin
           </p>
         </>
@@ -104,12 +104,12 @@ export default function AttractModeContent() {
 
       {/* Loading Skeleton */}
       {!!museumObjectState.manifestData?.label?.["en"]?.length && (
-        <div className="flex flex-col justify-center items-center gap-y-8 z-[11]">
+        <div className="z-[11] flex flex-col items-center justify-center gap-y-8">
           {/* Title Skeleton */}
-          <Skeleton className="w-[800px] h-[72px]" />
+          <Skeleton className="h-[72px] w-[800px]" />
 
           {/* Button Skeleton */}
-          <Skeleton className="w-[260px] h-[60px]" />
+          <Skeleton className="h-[60px] w-[260px]" />
         </div>
       )}
     </div>

@@ -8,7 +8,7 @@ const Viewer = dynamic(
   {
     ssr: false, // Disable server-side rendering for this component
     loading: () => <p>Loading viewer...</p>, // Optional: Add a loading fallback
-  }
+  },
 );
 
 export default function IIIFViewer() {
@@ -49,7 +49,7 @@ export default function IIIFViewer() {
   };
 
   return (
-    <div className="h-[100dvh] w-[100dvw] flex flex-col justify-center items-center bg-black text-white">
+    <div className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white">
       <Viewer
         iiifContent={iiifContent}
         customTheme={customTheme}
