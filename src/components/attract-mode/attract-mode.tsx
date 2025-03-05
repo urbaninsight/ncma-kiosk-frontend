@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { MuseumObjectContext } from "@/context/museum-object-context";
+import { useContext, useEffect, useRef, useState } from "react";
+import Skeleton from "../skeleton/skeleton";
 
 const ATTRACT_MODE_TIMEOUT_MINUTES = 3;
 const ATTRACT_MODE_TIMEOUT_MILLISECONDS =
   ATTRACT_MODE_TIMEOUT_MINUTES * 60 * 1000;
 
 export default function AttractModeContent() {
-  // TODO: move attract mode state to global context
+  const { museumObjectState } = useContext(MuseumObjectContext);
   const [attractModeActive, setAttractModeActive] = useState(true);
   const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null); // Use a ref for the timer
 
@@ -87,13 +89,29 @@ export default function AttractModeContent() {
       {/* Darkened Overlay over Video so text is more legible */}
       <div className="absolute top-0 left-0 h-[100dvh] w-[100dvw] bg-black opacity-30 z-[10]"></div>
 
-      {/* TODO: make dynamic - use label component? */}
-      <h1 className="text-7xl font-bold animate-pulse text-center max-w-6xl z-[11]">
-        Commedia dell&apos;Arte: The Masks of Antonio Fava
-      </h1>
-      <p className="animate-pulse text-3xl font-bold uppercase border-4 border-white px-5 py-2 hover:text-gray-500 hover:border-gray-500 mb-5">
-        Tap to Begin
-      </p>
+      {/* Title + Button */}
+      {!!museumObjectState.manifestData?.label?.["en"]?.length && (
+        <>
+          <h1 className="text-7xl font-bold animate-pulse text-center max-w-6xl z-[11]">
+            {/* TODO: support multilingual */}
+            {museumObjectState.manifestData?.label["en"] ?? ""}
+          </h1>
+          <p className="animate-pulse text-3xl font-bold uppercase border-4 border-white px-5 py-2 hover:text-gray-500 hover:border-gray-500 mb-5">
+            Tap to Begin
+          </p>
+        </>
+      )}
+
+      {/* Loading Skeleton */}
+      {!!museumObjectState.manifestData?.label?.["en"]?.length && (
+        <div className="flex flex-col justify-center items-center gap-y-8 z-[11]">
+          {/* Title Skeleton */}
+          <Skeleton className="w-[800px] h-[72px]" />
+
+          {/* Button Skeleton */}
+          <Skeleton className="w-[260px] h-[60px]" />
+        </div>
+      )}
     </div>
   ) : null;
 }
