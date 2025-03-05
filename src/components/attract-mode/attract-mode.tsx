@@ -103,7 +103,7 @@ export default function AttractModeContent() {
       )}
 
       {/* Loading Skeleton */}
-      {!!museumObjectState.manifestData?.label?.["en"]?.length && (
+      {!museumObjectState.manifestData?.label?.["en"]?.length && (
         <div className="z-[11] flex flex-col items-center justify-center gap-y-8">
           {/* Title Skeleton */}
           <Skeleton className="h-[72px] w-[800px]" />
