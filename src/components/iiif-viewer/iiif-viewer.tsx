@@ -1,6 +1,8 @@
 "use client";
 
+import { MuseumObjectContext } from "@/context/museum-object-context";
 import dynamic from "next/dynamic";
+import { useContext } from "react";
 
 // TODO: Loading skeleton
 const Viewer = dynamic(
@@ -12,6 +14,8 @@ const Viewer = dynamic(
 );
 
 export default function IIIFViewer() {
+  const { museumObjectState } = useContext(MuseumObjectContext);
+
   // TODO: base content off of ENV variable?
   const iiifContent = `${process.env.NEXT_PUBLIC_URL}/one-image-example-manifest.json`;
 
@@ -61,9 +65,10 @@ export default function IIIFViewer() {
           // TODO: ENV variable to hide info panel toggle?
           informationPanel: {
             open: false,
-            renderToggle: true,
             renderAbout: false,
-            renderAnnotation: true,
+            defaultTab:
+              museumObjectState?.manifestData?.items?.[0]?.annotations?.[0]
+                .id ?? "",
           },
           openSeadragon: {
             scrollZoom: true,
