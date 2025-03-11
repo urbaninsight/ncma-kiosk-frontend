@@ -70,6 +70,14 @@ export default function IIIFViewer() {
               museumObjectState?.manifestData?.items?.[0]?.annotations?.[0]
                 .id ?? "",
           },
+          annotationOverlays: {
+            backgroundColor: "rgba(209, 99, 58, 1)",
+            borderWidth: "10px",
+            borderType: "solid",
+            borderColor: "rgba(209, 99, 58, 0.5)",
+            opacity: "1",
+            zoomLevel: 24,
+          },
           openSeadragon: {
             scrollZoom: true,
             navigatorRotate: false,
