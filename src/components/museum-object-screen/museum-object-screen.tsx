@@ -33,7 +33,7 @@ export default function MuseumObjectScreen() {
   return (
     <>
       <AttractMode />
-      <IIIFViewer />
+      {museumObjectState.manifestData && <IIIFViewer />}
     </>
   );
 }
