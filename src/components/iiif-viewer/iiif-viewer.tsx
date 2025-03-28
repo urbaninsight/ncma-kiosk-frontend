@@ -17,7 +17,7 @@ export default function IIIFViewer() {
   const { museumObjectState } = useContext(MuseumObjectContext);
 
   // TODO: base content off of ENV variable?
-  const iiifContent = `${process.env.NEXT_PUBLIC_URL}/one-image-example-manifest.json`;
+  const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
 
   // TODO: base colors off of ENV variables?
   const customTheme = {
@@ -88,6 +88,7 @@ export default function IIIFViewer() {
             gestureSettingsMouse: {
               scrollToZoom: true,
             },
+            pinchZoom: true,
           },
         }}
       />

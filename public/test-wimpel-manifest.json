@@ -1,0 +1,89 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://ncma-kiosk-frontend.pages.dev/test-wimpel-manifest.json",
+  "type": "Manifest",
+  "label": { "en": ["Torah Binder (Wimpel)"], "es": [""] },
+  "summary": {
+    "en": [
+      "<p>This is a wimpel or Torah binder. It is made from a long piece of linen. German Jews used this to swaddle baby boys at their brit milah [Jewish circumcision ritual]. When he became bar mitzvah, this same linen would be used to bind the temple's Torah scroll.</p><p>This is a wimpel or Torah binder. It is made from a long piece of linen. German Jews used this to swaddle baby boys at their brit milah [Jewish circumcision ritual]. When he became bar mitzvah, this same linen would be used to bind the temple's Torah scroll. Lorem ipsum ulvinar dolus proin semper epulae quidem. ingenium consectetuer tempor porttitor quibus mollis. tego class immitto pellentesque paulatim neque. litora damnum porttitor gemino pertineo tincidunt typicus.</p>"
+    ],
+    "es": [""]
+  },
+  "items": [
+    {
+      "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+      "type": "Canvas",
+      "width": 25000,
+      "height": 2335,
+      "items": [
+        {
+          "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/annotation_page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-content/uploads/2025/02/2024-01-11_ESCHWEGE_Wimpel_2023_26_1_NA_COND_front_stitch_blk_CROP_PUB-1.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 25000,
+                "height": 2335
+              },
+              "target": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/annotations_page1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://.../annotation1",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": {
+                "type": "TextualBody",
+                "value": "Your annotation text",
+                "format": "text/html",
+                "language": "en"
+              },
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://.../canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 500,
+                  "y": 400
+                }
+              }
+            },
+            {
+              "id": "https://.../annotation2",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": {
+                "type": "TextualBody",
+                "value": "Your annotation text",
+                "format": "text/html",
+                "language": "en"
+              },
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://.../canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 2000,
+                  "y": 750
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

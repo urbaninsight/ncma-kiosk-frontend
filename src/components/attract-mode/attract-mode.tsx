@@ -2,6 +2,7 @@
 
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import { useContext, useEffect, useRef, useState } from "react";
+import HandTouchIcon from "../icons/hand-touch";
 import Skeleton from "../skeleton/skeleton";
 
 const ATTRACT_MODE_TIMEOUT_MINUTES = 3;
@@ -68,50 +69,70 @@ export default function AttractModeContent() {
     };
   }, [attractModeActive]);
 
+  if (!attractModeActive) {
+    return null;
+  }
+
   // TODO: Fade out
   // TODO: Reset IIIF to default state on animation end
-  return attractModeActive ? (
+  return (
     <div className="attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white">
-      {/* Video BG */}
-      <div className="absolute left-0 top-0 h-[100dvh] w-[100dvw]">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          {/* TODO: make dynamic */}
-          <source src="/test_vid.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <div className="flex flex-col items-center justify-center gap-y-16">
+        {/* Video + Text */}
+        <div className="mb-6 flex flex-row justify-center gap-x-8 px-[108px]">
+          {/* Video BG */}
+          <div className="flex flex-1">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+            >
+              {/* TODO: make dynamic */}
+              <source src="/test_vid.mp4" type="video/mp4" />
+            </video>
+          </div>
 
-      {/* Darkened Overlay over Video so text is more legible */}
-      <div className="absolute left-0 top-0 z-[10] h-[100dvh] w-[100dvw] bg-black opacity-30"></div>
+          {/* Text */}
+          {/* TODO: multilingual */}
+          {!!museumObjectState.manifestData?.label?.["en"]?.length &&
+            !!museumObjectState.manifestData?.summary?.["en"]?.length && (
+              <div className="flex flex-1">
+                <div>
+                  <h1 className="z-[11] text-3xl font-semibold leading-[100%]">
+                    {museumObjectState.manifestData.label["en"]}
+                  </h1>
+                  <div
+                    className="mt-4 flex flex-col gap-y-4 text-[28px] font-light leading-[120%]"
+                    dangerouslySetInnerHTML={{
+                      __html: museumObjectState.manifestData.summary["en"],
+                    }}
+                  ></div>
+                </div>
+              </div>
+            )}
 
-      {/* Title + Button */}
-      {!!museumObjectState.manifestData?.label?.["en"]?.length && (
-        <>
-          <h1 className="z-[11] max-w-6xl animate-pulse text-center text-7xl font-bold">
-            {/* TODO: support multilingual */}
-            {museumObjectState.manifestData?.label["en"] ?? ""}
-          </h1>
-          <p className="mb-5 animate-pulse border-4 border-white px-5 py-2 text-3xl font-bold uppercase hover:border-gray-500 hover:text-gray-500">
-            Tap to Begin
-          </p>
-        </>
-      )}
+          {/* Text Skeleton */}
+          {/* TODO: */}
+          {!museumObjectState.manifestData?.label?.["en"]?.length && (
+            <div className="z-[11] flex flex-col items-center justify-center gap-y-8">
+              {/* Title Skeleton */}
+              <Skeleton className="h-[72px] w-[800px]" />
 
-      {/* Loading Skeleton */}
-      {!museumObjectState.manifestData?.label?.["en"]?.length && (
-        <div className="z-[11] flex flex-col items-center justify-center gap-y-8">
-          {/* Title Skeleton */}
-          <Skeleton className="h-[72px] w-[800px]" />
-
-          {/* Button Skeleton */}
-          <Skeleton className="h-[60px] w-[260px]" />
+              {/* Button Skeleton */}
+              <Skeleton className="h-[60px] w-[260px]" />
+            </div>
+          )}
         </div>
-      )}
+
+        {/* User Instructions */}
+        <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
+          <HandTouchIcon />
+
+          <span>Touch anywhere to explore</span>
+        </div>
+      </div>
     </div>
-  ) : null;
+  );
 }

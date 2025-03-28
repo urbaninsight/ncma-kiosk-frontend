@@ -45,20 +45,15 @@ body {
     }
   }
 
-  /* Hide Controls */
-  div[data-testid="clover-iiif-image-openseadragon-controls"] {
-    display: none;
-  }
-
   /* Hide the search button in the media navigator */
   .clover-viewer-media-wrapper > div > div > button {
     display: none;
   }
 
-  /* Hide header
+  /* Hide header */
   .clover-viewer-header {
     display: none;
-  } */
+  }
 }
 /* END CLOVER VIEWER STYLES */
 

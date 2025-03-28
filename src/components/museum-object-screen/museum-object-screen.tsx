@@ -13,7 +13,7 @@ export default function MuseumObjectScreen() {
 
   // Fetch manifest data and store it in context
   useEffect(() => {
-    const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/one-image-example-manifest.json`;
+    const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
 
     try {
       fetch(iiifUrl)
