@@ -2,7 +2,8 @@
 
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import dynamic from "next/dynamic";
-import { useContext } from "react";
+import { Viewer as OSDViewer } from "openseadragon";
+import { useContext, useEffect, useState } from "react";
 
 // TODO: Loading skeleton
 const Viewer = dynamic(
@@ -16,8 +17,14 @@ const Viewer = dynamic(
 export default function IIIFViewer() {
   const { museumObjectState } = useContext(MuseumObjectContext);
 
+  const [openSeadragonViewer, setOpenSeadragonViewer] = useState<OSDViewer>();
+
+  // TODO: remove once we no longer need mock data for testing
+  // const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
+
   // TODO: base content off of ENV variable?
-  const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
+  const iiifContent =
+    "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF";
 
   // TODO: base colors off of ENV variables?
   const customTheme = {
@@ -52,23 +59,31 @@ export default function IIIFViewer() {
     },
   };
 
+  const onOSDViewerInitialized = (OSDViewer: OSDViewer) => {
+    setOpenSeadragonViewer(OSDViewer);
+  };
+
+  useEffect(() => {
+    if (museumObjectState.attractModeActive && !!openSeadragonViewer) {
+      openSeadragonViewer.viewport.goHome();
+    }
+  }, [museumObjectState.attractModeActive]);
+
   return (
     <div className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white">
       <Viewer
         iiifContent={iiifContent}
+        unVaultedIIIFContent={museumObjectState.manifestData}
         customTheme={customTheme}
+        openSeadragonInstanceCallback={onOSDViewerInitialized}
         options={{
           canvasBackgroundColor: "#000",
           canvasHeight: "100%",
           showIIIFBadge: false,
           showTitle: false,
-          // TODO: ENV variable to hide info panel toggle?
           informationPanel: {
             open: false,
             renderAbout: false,
-            defaultTab:
-              museumObjectState?.manifestData?.items?.[0]?.annotations?.[0]
-                .id ?? "",
           },
           annotationOverlays: {
             backgroundColor: "rgba(209, 99, 58, 1)",
@@ -79,16 +94,16 @@ export default function IIIFViewer() {
             zoomLevel: 24,
           },
           openSeadragon: {
-            scrollZoom: true,
+            // scrollZoom: true,
             navigatorRotate: false,
             showRotationControl: false,
-            showHomeControl: false,
+            showHomeControl: true,
             showFullPageControl: false,
             navigatorDisplayRegionColor: "transparent",
             gestureSettingsMouse: {
               scrollToZoom: true,
             },
-            pinchZoom: true,
+            // pinchZoom: true,
           },
         }}
       />
