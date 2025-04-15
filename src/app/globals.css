@@ -26,6 +26,14 @@ body {
   -ms-user-select: none; /* IE/Edge */
 }
 
+/* Prevent attact mode from still being visible when it slides out */
+html,
+body {
+  overflow-x: hidden;
+  transform: translateX(0); /* Ensure transform is applied properly */
+  will-change: transform; /* Hint to the browser that this element will change */
+}
+
 /* CLOVER VIEWER STYLES */
 .clover-viewer {
   /* Make viewer take up the whole screen */
@@ -58,18 +66,34 @@ body {
 /* END CLOVER VIEWER STYLES */
 
 /* ANIMATIONS */
-/* Fade-in animation */
-@keyframes fadeIn {
+/* Slide-in from right animation */
+@keyframes slideInFromRight {
   from {
-    opacity: 0;
+    transform: translateX(100%);
   }
   to {
-    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-/* Apply the animation to the attract mode container */
+/* Slide-out to right animation */
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Apply the slide-in animation to the attract mode container */
 .attract-mode {
-  animation: fadeIn 5s ease-in-out; /* Adjust duration and timing function as needed */
+  overflow: hidden;
+  animation: slideInFromRight 1s ease-in-out forwards;
+}
+
+/* Class for slide-out animation */
+.attract-mode-slide-out {
+  animation: slideOutToRight 1s ease-in-out forwards;
 }
 /* END ANIMATIONS */

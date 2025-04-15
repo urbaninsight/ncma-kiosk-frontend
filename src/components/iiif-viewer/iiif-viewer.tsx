@@ -65,7 +65,9 @@ export default function IIIFViewer() {
 
   useEffect(() => {
     if (museumObjectState.attractModeActive && !!openSeadragonViewer) {
-      openSeadragonViewer.viewport.goHome();
+      setTimeout(() => {
+        openSeadragonViewer.viewport.goHome();
+      }, 1000); // wait for slide animation to finish
     }
   }, [museumObjectState.attractModeActive]);
 
