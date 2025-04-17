@@ -4,6 +4,7 @@ import { MuseumObjectContext } from "@/context/museum-object-context";
 import dynamic from "next/dynamic";
 import { Viewer as OSDViewer } from "openseadragon";
 import { useContext, useEffect, useState } from "react";
+import AdditionalControls from "../additional-controls/additional-controls";
 
 // TODO: Loading skeleton
 const Viewer = dynamic(
@@ -73,6 +74,12 @@ export default function IIIFViewer() {
 
   return (
     <div className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white">
+      {/* Addditional Controls (bottom right of the screen) */}
+      <div className="absolute bottom-0 right-[8.75rem] z-[9]">
+        <AdditionalControls />
+      </div>
+
+      {/* Viewer */}
       <Viewer
         iiifContent={iiifContent}
         unVaultedIIIFContent={museumObjectState.manifestData}

@@ -9,8 +9,9 @@ export interface MuseumObjectStateContext {
 }
 
 export interface MuseumObjectState {
-  manifestData?: Manifest;
-  objectMetadata?: MuseumObjectMetadata;
-  openSeadragonViewer?: OSDViewer;
+  manifestData?: Manifest; // IIIF manifest JSON data converted to js object
+  objectMetadata?: MuseumObjectMetadata; // Metadata from the WP API
+  openSeadragonViewer?: OSDViewer; // OpenSeadragon Instance used inside clover
   attractModeActive: boolean;
+  activeLanguage: "en" | "es";
 }

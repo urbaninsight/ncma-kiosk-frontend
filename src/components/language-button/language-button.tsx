@@ -1,0 +1,45 @@
+"use client";
+
+import { MuseumObjectContext } from "@/context/museum-object-context";
+import { useContext, useEffect, useState } from "react";
+
+export default function LanguageButton() {
+  const { museumObjectState, setMuseumObjectState } =
+    useContext(MuseumObjectContext);
+  const [languageButtonText, setLanguageButtonText] = useState("Español");
+
+  useEffect(() => {
+    if (museumObjectState.activeLanguage === "en") {
+      setLanguageButtonText("Español");
+    } else {
+      setLanguageButtonText("English");
+    }
+  }, [museumObjectState.activeLanguage]);
+
+  const onLanguageClick = (event: any) => {
+    // The attract mode has listeners for click events that close the attract mode.
+    // We want this button to switch lanugages, but don't want the click event to close the attract mode.
+    event.stopPropagation();
+
+    if (museumObjectState.activeLanguage === "en") {
+      setMuseumObjectState((prevState) => ({
+        ...prevState,
+        activeLanguage: "es",
+      }));
+    } else {
+      setMuseumObjectState((prevState) => ({
+        ...prevState,
+        activeLanguage: "en",
+      }));
+    }
+  };
+
+  return (
+    <button
+      className="additional-controls-button flex h-8 w-32 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-black hover:bg-white hover:text-black"
+      onClick={onLanguageClick}
+    >
+      <span>{languageButtonText}</span>
+    </button>
+  );
+}

@@ -9,6 +9,7 @@ import { createContext, useState } from "react";
 const initialMuseumObjectState: MuseumObjectState = {
   manifestData: undefined,
   attractModeActive: true,
+  activeLanguage: "en",
 };
 
 export const MuseumObjectContext = createContext<MuseumObjectStateContext>({
