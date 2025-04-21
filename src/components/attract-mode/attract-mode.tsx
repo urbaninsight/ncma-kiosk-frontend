@@ -16,7 +16,6 @@ export default function AttractModeContent() {
   const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null); // Use a ref for the timer
   const [isSlidingOut, setIsSlidingOut] = useState(false);
 
-  // Function to start the attract mode
   const startAttractMode = () => {
     setMuseumObjectState((prev) => ({
       ...prev,
@@ -24,7 +23,6 @@ export default function AttractModeContent() {
     }));
   };
 
-  // Function to stop the attract mode
   const stopAttractMode = () => {
     setMuseumObjectState((prev) => ({
       ...prev,

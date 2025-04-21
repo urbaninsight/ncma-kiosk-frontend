@@ -3,8 +3,9 @@
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import dynamic from "next/dynamic";
 import { Viewer as OSDViewer } from "openseadragon";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AdditionalControls from "../additional-controls/additional-controls";
+import PinchToZoomIndicator from "../pinch-to-zoom-indicator/pinch-to-zoom-indicator";
 
 // TODO: Loading skeleton
 const Viewer = dynamic(
@@ -19,6 +20,8 @@ export default function IIIFViewer() {
   const { museumObjectState } = useContext(MuseumObjectContext);
 
   const [openSeadragonViewer, setOpenSeadragonViewer] = useState<OSDViewer>();
+
+  const viewerRef = useRef<HTMLDivElement>(null);
 
   // TODO: remove once we no longer need mock data for testing
   // const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
@@ -73,10 +76,18 @@ export default function IIIFViewer() {
   }, [museumObjectState.attractModeActive]);
 
   return (
-    <div className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white">
+    <div
+      ref={viewerRef}
+      className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white"
+    >
       {/* Addditional Controls (bottom right of the screen) */}
       <div className="absolute bottom-0 right-[8.75rem] z-[9]">
         <AdditionalControls />
+      </div>
+
+      {/* Pinch-To-Zoom Indicator */}
+      <div className="pointer-events-none absolute right-0 top-0 z-[9] mt-36 flex h-[100dvh] w-[100dvw] items-center justify-center">
+        <PinchToZoomIndicator viewerRef={viewerRef} />
       </div>
 
       {/* Viewer */}

@@ -13,5 +13,6 @@ export interface MuseumObjectState {
   objectMetadata?: MuseumObjectMetadata; // Metadata from the WP API
   openSeadragonViewer?: OSDViewer; // OpenSeadragon Instance used inside clover
   attractModeActive: boolean;
+  pinchToZoomIndicatorActive: boolean;
   activeLanguage: "en" | "es";
 }
