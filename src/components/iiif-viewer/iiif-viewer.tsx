@@ -85,6 +85,7 @@ export default function IIIFViewer() {
         unVaultedIIIFContent={museumObjectState.manifestData}
         customTheme={customTheme}
         openSeadragonInstanceCallback={onOSDViewerInitialized}
+        activeLanguageCode={museumObjectState.activeLanguage}
         options={{
           canvasBackgroundColor: "#000",
           canvasHeight: "100%",

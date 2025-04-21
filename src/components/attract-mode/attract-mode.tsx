@@ -6,7 +6,7 @@ import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
 import Skeleton from "../skeleton/skeleton";
 
-const ATTRACT_MODE_TIMEOUT_MINUTES = 0.1;
+const ATTRACT_MODE_TIMEOUT_MINUTES = 3;
 const ATTRACT_MODE_TIMEOUT_MILLISECONDS =
   ATTRACT_MODE_TIMEOUT_MINUTES * 60 * 1000;
 
