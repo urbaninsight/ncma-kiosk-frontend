@@ -17,7 +17,11 @@ const Viewer = dynamic(
   },
 );
 
-export default function IIIFViewer() {
+interface IIIFViewerProps {
+  annotatedImageId: string;
+}
+
+export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
   const { museumObjectState } = useContext(MuseumObjectContext);
 
   const [openSeadragonViewer, setOpenSeadragonViewer] = useState<OSDViewer>();
@@ -28,8 +32,7 @@ export default function IIIFViewer() {
   // const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
 
   // TODO: base content off of ENV variable?
-  const iiifContent =
-    "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF";
+  const iiifContent = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
   // TODO: base colors off of ENV variables?
   const customTheme = {

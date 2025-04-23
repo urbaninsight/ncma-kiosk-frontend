@@ -8,7 +8,13 @@ import { useContext, useEffect } from "react";
 import AttractMode from "../attract-mode/attract-mode";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
 
-export default function MuseumObjectScreen() {
+interface MuseumObjectScreenProps {
+  annotatedImageId: string;
+}
+
+export default function MuseumObjectScreen({
+  annotatedImageId,
+}: MuseumObjectScreenProps) {
   const { museumObjectState, setMuseumObjectState } =
     useContext(MuseumObjectContext);
 
@@ -16,11 +22,9 @@ export default function MuseumObjectScreen() {
   useEffect(() => {
     // TODO: remove once we no longer need mock data for testing
     // const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
-    const iiifUrl =
-      "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF";
+    const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
-    const objectMetadataUrl =
-      "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13";
+    const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
 
     try {
       const fetchData = async () => {
@@ -49,7 +53,9 @@ export default function MuseumObjectScreen() {
   return (
     <>
       <AttractMode />
-      {museumObjectState.manifestData && <IIIFViewer />}
+      {museumObjectState.manifestData && (
+        <IIIFViewer annotatedImageId={annotatedImageId} />
+      )}
     </>
   );
 }
