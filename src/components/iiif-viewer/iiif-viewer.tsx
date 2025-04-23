@@ -4,6 +4,7 @@ import { MuseumObjectContext } from "@/context/museum-object-context";
 import dynamic from "next/dynamic";
 import { Viewer as OSDViewer } from "openseadragon";
 import { useContext, useEffect, useRef, useState } from "react";
+import tinyColor2 from "tinycolor2";
 import AdditionalControls from "../additional-controls/additional-controls";
 import PinchToZoomIndicator from "../pinch-to-zoom-indicator/pinch-to-zoom-indicator";
 
@@ -107,10 +108,15 @@ export default function IIIFViewer() {
             renderAbout: false,
           },
           annotationOverlays: {
-            backgroundColor: "rgba(209, 99, 58, 1)",
+            backgroundColor:
+              museumObjectState.objectMetadata?.annotation_color ?? "",
             borderWidth: "10px",
             borderType: "solid",
-            borderColor: "rgba(209, 99, 58, 0.5)",
+            borderColor: tinyColor2(
+              museumObjectState.objectMetadata?.annotation_color ?? "",
+            )
+              .setAlpha(0.5)
+              .toRgbString(),
             opacity: "1",
             zoomLevel: 24,
           },

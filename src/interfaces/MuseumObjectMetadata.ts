@@ -28,6 +28,7 @@ export interface MuseumObjectMetadata {
   description_image: ObjectMetadataImageSizes;
   description_video: string;
   image: ObjectMetadataImageSizes;
-  annotation_color: string;
   image_annotations: ObjectMetadataImageAnnotation[];
+  annotation_color: string;
+  annotation_highlight_color: string;
 }
