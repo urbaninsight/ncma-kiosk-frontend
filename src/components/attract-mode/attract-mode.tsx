@@ -115,13 +115,15 @@ export default function AttractModeContent() {
             ]?.length && (
               <div className="flex flex-1">
                 <div>
-                  <h1 className="mb- z-[11] text-3xl font-semibold leading-[100%]">
-                    {
-                      museumObjectState.manifestData.label[
-                        museumObjectState.activeLanguage
-                      ]
-                    }
-                  </h1>
+                  <h1
+                    className="mb- z-[11] text-3xl font-semibold leading-[100%]"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        museumObjectState.manifestData.label[
+                          museumObjectState.activeLanguage
+                        ] ?? "",
+                    }}
+                  ></h1>
                   {/* TODO: There's way too much text, so I set it to text-xl. If the client wants to reduce the amount of text, we can set it back to 28px */}
                   <div
                     className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-xl font-light leading-[120%]"
