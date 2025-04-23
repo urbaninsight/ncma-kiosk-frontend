@@ -21,9 +21,9 @@ export default function AdditionalControls() {
 
   return (
     <div className="flex flex-row items-center justify-center space-x-[0.618rem] rounded-lg p-4">
-      <div className="w-max-content mr-8 flex h-10 items-center justify-center rounded-md bg-black px-[18px] py-[15px] text-white">
+      <div className="w-max-content mr-8 flex h-8 items-center justify-center rounded-md bg-black px-[18px] py-[15px] text-white">
         <span className="mr-4 text-lg">
-          <PinchToZoomIcon className="h-7 w-7" />
+          <PinchToZoomIcon className="h-6 w-6" />
         </span>
         <span>Pinch to zoom</span>
       </div>
