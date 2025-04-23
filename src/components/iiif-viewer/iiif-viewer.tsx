@@ -117,6 +117,15 @@ export default function IIIFViewer() {
             )
               .setAlpha(0.5)
               .toRgbString(),
+            highlightedBackgroundColor:
+              museumObjectState.objectMetadata?.annotation_highlight_color ??
+              "",
+            highlightedBorderColor: tinyColor2(
+              museumObjectState.objectMetadata?.annotation_highlight_color ??
+                "",
+            )
+              .setAlpha(0.5)
+              .toRgbString(),
             opacity: "1",
             zoomLevel: 24,
           },
