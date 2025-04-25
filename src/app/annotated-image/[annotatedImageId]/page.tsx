@@ -25,7 +25,7 @@ export async function generateStaticParams() {
   );
   const data = await res.json();
 
-  return data.map((item: { id: number }) => ({
-    annotatedImageId: item.id.toString(),
+  return data.map((id: number) => ({
+    annotatedImageId: id.toString(),
   }));
 }
