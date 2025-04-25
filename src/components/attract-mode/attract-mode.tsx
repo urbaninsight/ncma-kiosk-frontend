@@ -4,7 +4,6 @@ import { MuseumObjectContext } from "@/context/museum-object-context";
 import { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
-import Skeleton from "../skeleton/skeleton";
 
 const ATTRACT_MODE_TIMEOUT_MINUTES = 3;
 const ATTRACT_MODE_TIMEOUT_MILLISECONDS =
@@ -94,7 +93,7 @@ export default function AttractModeContent() {
       <div className="flex flex-col items-center justify-center gap-y-16">
         {/* Video + Text */}
         <div className="mb-6 flex flex-row justify-center gap-x-8 px-[108px]">
-          {/* Video BG */}
+          {/* Video */}
           <div className="flex flex-1 overflow-hidden">
             {museumObjectState.objectMetadata?.description_video && (
               <div
@@ -137,20 +136,6 @@ export default function AttractModeContent() {
                 </div>
               </div>
             )}
-
-          {/* Text Skeleton */}
-          {/* TODO: */}
-          {!museumObjectState.manifestData?.label?.[
-            museumObjectState.activeLanguage
-          ]?.length && (
-            <div className="z-[11] flex flex-col items-center justify-center gap-y-8">
-              {/* Title Skeleton */}
-              <Skeleton className="h-[72px] w-[800px]" />
-
-              {/* Button Skeleton */}
-              <Skeleton className="h-[60px] w-[260px]" />
-            </div>
-          )}
         </div>
 
         {/* User Instructions */}
