@@ -101,6 +101,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
         customTheme={customTheme}
         openSeadragonInstanceCallback={onOSDViewerInitialized}
         activeLanguageCode={museumObjectState.activeLanguage}
+        hideInformationPanel={museumObjectState.attractModeActive}
         options={{
           canvasBackgroundColor: "#000",
           canvasHeight: "100%",
