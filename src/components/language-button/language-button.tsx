@@ -38,6 +38,7 @@ export default function LanguageButton() {
     <button
       className="additional-controls-button flex h-8 w-32 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-black hover:bg-white hover:text-black"
       onClick={onLanguageClick}
+      onTouchStart={onLanguageClick}
     >
       <span>{languageButtonText}</span>
     </button>

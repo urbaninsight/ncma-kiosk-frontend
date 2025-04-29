@@ -33,6 +33,7 @@ export default function AdditionalControls() {
       <button
         className="additional-controls-button w-max-content group flex h-8 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-black hover:bg-white hover:text-black"
         onClick={onLearnMoreClick}
+        onTouchStart={onLearnMoreClick}
       >
         <span className="mr-4 text-lg">
           <InfoSpeechBubbleIcon
