@@ -82,12 +82,15 @@ export default function AttractModeContent() {
   // TODO: Reset IIIF to default state on animation end
   return (
     <div
+      tabIndex={museumObjectState.attractModeActive ? 0 : -1}
       className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut ? "attract-mode-slide-out" : ""}`}
     >
       {/* Language Button */}
-      <div className="absolute bottom-4 right-4 z-[11]">
-        <LanguageButton />
-      </div>
+      {museumObjectState.attractModeActive && (
+        <div className="absolute bottom-4 right-4 z-[11]">
+          <LanguageButton />
+        </div>
+      )}
 
       {/* Content */}
       <div className="flex flex-col items-center justify-center gap-y-16">
@@ -142,7 +145,10 @@ export default function AttractModeContent() {
         <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
           <HandTouchIcon />
 
-          <span>Touch anywhere to explore</span>
+          <span aria-hidden="true">Touch anywhere to explore</span>
+          <span className="sr-only">
+            Click anywhere or press enter to explore
+          </span>
         </div>
       </div>
     </div>
