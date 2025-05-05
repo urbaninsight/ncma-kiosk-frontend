@@ -28,7 +28,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   // TODO: remove once we no longer need mock data for testing
-  const iiifContent = `/birds-eye-boston.json`;
+  const iiifContent = `https://aam-demo.pages.dev/birds-eye-boston.json`;
 
   // TODO: base content off of ENV variable?
   // const iiifContent = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;

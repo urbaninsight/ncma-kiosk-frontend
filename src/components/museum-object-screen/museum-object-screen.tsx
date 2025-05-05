@@ -2,7 +2,6 @@
 
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import { MuseumObjectState } from "@/interfaces/MuseumObjectContext";
-import { MuseumObjectMetadata } from "@/interfaces/MuseumObjectMetadata";
 import { Manifest } from "@iiif/presentation-3";
 import { useContext, useEffect } from "react";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
@@ -20,26 +19,17 @@ export default function MuseumObjectScreen({
   // Fetch manifest data and store it in context
   useEffect(() => {
     // TODO: remove once we no longer need mock data for testing
-    const iiifUrl = `/birds-eye-boston.json`;
+    const iiifUrl = `https://aam-demo.pages.dev/birds-eye-boston.json`;
     // const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
-
-    const objectMetadataUrl = `/birds-eye-boston.json`;
 
     try {
       const fetchData = async () => {
-        const [iiifResponseRaw, objectMetadataResponseRaw] = await Promise.all([
-          fetch(iiifUrl),
-          fetch(objectMetadataUrl),
-        ]);
-        const [iiifResponse, objectMetadataResponse] = await Promise.all([
-          iiifResponseRaw.json(),
-          objectMetadataResponseRaw.json(),
-        ]);
+        const [iiifResponseRaw] = await Promise.all([fetch(iiifUrl)]);
+        const [iiifResponse] = await Promise.all([iiifResponseRaw.json()]);
 
         const newState: MuseumObjectState = {
           ...museumObjectState,
           manifestData: iiifResponse as Manifest,
-          objectMetadata: objectMetadataResponse as MuseumObjectMetadata,
         };
         setMuseumObjectState(newState);
       };
