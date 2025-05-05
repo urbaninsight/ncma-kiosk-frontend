@@ -20,7 +20,7 @@ export default function MuseumObjectScreen({
   // Fetch manifest data and store it in context
   useEffect(() => {
     // TODO: remove once we no longer need mock data for testing
-    const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/birds-eye-boston.json`;
+    const iiifUrl = `/birds-eye-boston.json`;
     // const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
     const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
