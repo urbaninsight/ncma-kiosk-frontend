@@ -23,7 +23,7 @@ export default function MuseumObjectScreen({
     const iiifUrl = `/birds-eye-boston.json`;
     // const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
-    const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
+    const objectMetadataUrl = `/birds-eye-boston.json`;
 
     try {
       const fetchData = async () => {
