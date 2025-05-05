@@ -1,0 +1,376 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "http://localhost:3000/birds-eye-boston.json",
+  "type": "Manifest",
+  "label": {
+    "en": ["Explore This Whimsical <i>Wimpel</i>"],
+    "es": [""]
+  },
+  "summary": {
+    "en": [
+      "This is a wimpel, or Torah binder, made from a long piece of linen. Among German Jews, a wimpel was used first to swaddle a baby boy at their brit milah (circumcision) and decorated following the ceremony. The wimpel was later presented to the synagogue at the child’s first visit and symbolized the binding of the child to the Torah. The same wimpel would often be used when the child became a bar mitzvah, and again as part of their wedding canopy. \r\n\r\nMoses Reuben Eschwege (b. 1890, Thüngen, Germany) created this wimpel. He was a teacher, cantor, and secretary. After being imprisoned in a Nazi concentration camp in 1938, he fled with his family to New York in 1939, where he continued a career as a cantor, a mohel (ritual circumciser), and an illustrator of elaborate and often whimsical wimpels like this one. \r\n\r\n"
+    ],
+    "es": [
+      "Esta es una carpeta de wimpel o Torá. Está confeccionado con una pieza larga de lino. Los judíos alemanes usaban esto para envolver a los bebés varones en su brit milah [ritual de circuncisión judío]. Cuando se convirtiera en bar mitzvá, este mismo lino se usaría para encuadernar el rollo de la Torá del templo. \r\n\r\nEl creador de este wimpel es un hombre llamado Moisés (Moshe) Reuben Eschwege. Nació en Thüngen, Alemania, en 1890. Fue profesor, cantor y secretario. El 9 de noviembre de 1938, la Sturmabteilung y las Juventudes Hitlerianas saquearon y destruyeron alrededor de 7.500 negocios, tiendas, hogares y templos judíos en toda Alemania. Durante estas masacres de la Kristallnacht, 30.000 hombres judíos fueron encarcelados en campos de concentración nazis. Eschwege fue uno de ellos. Pudo escapar de Alemania con su familia. Llegó primero a Londres, pero terminó en la ciudad de Nueva York. Continuó su trabajo como cantor, pero asumió una profesión adicional como Mohel [circuncisión ritual]. Fue en Estados Unidos donde comenzó a crear wimpels. \r\n\r\nLa inscripción de esta pieza está en hebreo. Como muchos wimpels, incluye el nombre del niño y su fecha de nacimiento. La siguiente es la traducción al inglés: “Menajem hijo de Shlomo conocido como Michael Abraham Scharff que su Roca y Redentor lo proteja, nacido con buena fortuna el lunes 5 de Tamuz de 5707 [23 de junio de 1947]… Que el Señor lo levante para [tener el privilegio de] la Torá, el palio nupcial y las buenas obras, Amén”."
+    ]
+  },
+  "items": [
+    {
+      "id": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd376:g3764:g3764b:pm002791/full/pct:25/0/default.jpg",
+      "type": "Canvas",
+      "width": 2072,
+      "height": 1428,
+      "items": [
+        {
+          "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/painting_page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd376:g3764:g3764b:pm002791/full/pct:25/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2072,
+                "height": 1428
+              },
+              "target": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd376:g3764:g3764b:pm002791/full/pct:25/0/default.jpg"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas/annotation_page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "annotation-1",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Founded in 1867, the New England Conservatory is one of the oldest and most respected music schools in the United States. Located in Boston’s cultural district, it has nurtured generations of world-class musicians and composers. Its historic Jordan Hall is also a celebrated venue for concerts and public performances.",
+                  "label": "1. New England Conservatory of Music",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 660,
+                  "y": 610
+                }
+              }
+            },
+            {
+              "id": "annotation-2",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Opened in 1900, Symphony Hall is regarded as one of the finest concert halls in the world, both architecturally and acoustically. Designed specifically for the Boston Symphony Orchestra, the hall continues to be a central venue for major musical performances, offering an unforgettable experience for audiences.",
+                  "label": "2. Symphony Hall",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 730,
+                  "y": 550
+                }
+              }
+            },
+            {
+              "id": "annotation-3",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Built in 1901 for the Massachusetts Horticultural Society, Horticultural Hall served as a center for exhibitions and lectures on gardening and landscaping. With its elegant Beaux-Arts design, it stands today as a historic landmark, continuing to host events and conferences in Boston’s vibrant Back Bay neighborhood.",
+                  "label": "3. Horticultural Hall",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 810,
+                  "y": 520
+                }
+              }
+            },
+            {
+              "id": "annotation-4",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "The Mechanics Building once stood as a symbol of Boston’s industrial spirit. Hosting exhibitions that celebrated innovation in manufacturing and technology, it played a key role in promoting industrial education. Though the original building no longer exists, its legacy reflects Boston’s vital role in America’s industrial development.",
+                  "label": "4. Mechanics Building",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1030,
+                  "y": 480
+                }
+              }
+            },
+            {
+              "id": "annotation-5",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Crowning Beacon Hill, the Massachusetts State House is a masterpiece of Federal architecture, designed by Charles Bulfinch and completed in 1798. Its gleaming gold dome is one of Boston’s most iconic sights. The building remains the working seat of government and a symbol of Massachusetts’ political heritage.",
+                  "label": "5. State House",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1510,
+                  "y": 285
+                }
+              }
+            },
+            {
+              "id": "annotation-6",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Opened in 1899, South Station is not only Boston’s largest train terminal but also an architectural landmark in its own right. It connects the city to destinations throughout the Northeast via Amtrak, commuter rail, and bus services, serving as a vital gateway for millions of travelers each year.",
+                  "label": "6. South Station",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1840,
+                  "y": 330
+                }
+              }
+            },
+            {
+              "id": "annotation-7",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Located underneath the TD Garden arena, North Station serves as a critical hub for commuters and travelers heading to northern Massachusetts, New Hampshire, and Maine. Combining historic charm with modern transit, it offers easy access to sports events, concerts, and regional travel across New England.",
+                  "label": "7. North Station",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1420,
+                  "y": 280
+                }
+              }
+            },
+            {
+              "id": "annotation-8",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Towering over the historic Charlestown neighborhood, the Bunker Hill Monument commemorates the fierce Battle of Bunker Hill, one of the first major engagements of the American Revolution. Visitors can climb its 294 steps for sweeping views of Boston and reflect on the city's revolutionary roots.",
+                  "label": "8. Bunker Hill Monument",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1380,
+                  "y": 230
+                }
+              }
+            },
+            {
+              "id": "annotation-9",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Known historically as a landing place for immigrants, East Boston has evolved into a dynamic, diverse neighborhood. With waterfront parks, striking views of the skyline, and vibrant Latin American and Italian communities, “Eastie” continues to shape Boston’s culture and economy.",
+                  "label": "9. East Boston",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1820,
+                  "y": 250
+                }
+              }
+            },
+            {
+              "id": "annotation-10",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Charlestown, Boston’s oldest neighborhood, is rich in American history and maritime tradition. Home to the Bunker Hill Monument and the USS Constitution, it blends cobblestone streets and historic townhouses with a growing residential and business community, preserving a distinct sense of place.",
+                  "label": "10. Charlestown",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1360,
+                  "y": 255
+                }
+              }
+            },
+            {
+              "id": "annotation-11",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Across the Charles River from Boston, Cambridge is internationally known for its intellectual and cultural life, anchored by Harvard University and the Massachusetts Institute of Technology (MIT). Its lively squares, historic sites, and innovation-driven economy make it a dynamic and vibrant city in its own right.",
+                  "label": "11. Cambridge",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 790,
+                  "y": 300
+                }
+              }
+            },
+            {
+              "id": "annotation-12",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Founded in 1634, Boston Common is the oldest public park in the United States. Originally used for grazing livestock, it has been the site of countless protests, celebrations, and everyday leisure activities. Today, it remains a green heart of the city, linking historic sites along the Freedom Trail.",
+                  "label": "12. Boston Common",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 1505,
+                  "y": 325
+                }
+              }
+            },
+            {
+              "id": "annotation-13",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "Spanning the Charles River, the Harvard Bridge connects Boston’s Back Bay neighborhood with Cambridge and offers pedestrians and drivers scenic views of the river and city skylines. Famously measured in \"Smoots\" — a quirky MIT tradition — the bridge stands as a symbol of the area's blend of history, engineering, and humor.",
+                  "label": "13. Harvard Bridge",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 300,
+                  "y": 410
+                }
+              }
+            },
+            {
+              "id": "annotation-14",
+              "type": "Annotation",
+              "motivation": "tagging",
+              "body": [
+                {
+                  "type": "TextualBody",
+                  "value": "The official entrance to Massachusetts’ state park system invites visitors to explore the vast natural beauty of the Commonwealth. From urban green spaces to coastal reserves and mountain trails, the system offers diverse opportunities for recreation, conservation, and connection to the state’s natural heritage.",
+                  "label": "14. Entrance to State Park System",
+                  "format": "text/html",
+                  "language": "en"
+                }
+              ],
+              "target": {
+                "type": "SpecificResource",
+                "source": "https://dev-ncma-sandbox.pantheonsite.io/wp-json/ncma/v1/ncma-annotated-image/13/IIIF/canvas",
+                "selector": {
+                  "type": "PointSelector",
+                  "x": 190,
+                  "y": 505
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

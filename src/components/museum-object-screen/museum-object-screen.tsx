@@ -5,7 +5,6 @@ import { MuseumObjectState } from "@/interfaces/MuseumObjectContext";
 import { MuseumObjectMetadata } from "@/interfaces/MuseumObjectMetadata";
 import { Manifest } from "@iiif/presentation-3";
 import { useContext, useEffect } from "react";
-import AttractMode from "../attract-mode/attract-mode";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
 
 interface MuseumObjectScreenProps {
@@ -21,8 +20,8 @@ export default function MuseumObjectScreen({
   // Fetch manifest data and store it in context
   useEffect(() => {
     // TODO: remove once we no longer need mock data for testing
-    // const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
-    const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
+    const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/birds-eye-boston.json`;
+    // const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
     const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
 
@@ -52,7 +51,7 @@ export default function MuseumObjectScreen({
 
   return (
     <>
-      <AttractMode />
+      {/* <AttractMode /> */}
       {museumObjectState.manifestData && (
         <IIIFViewer annotatedImageId={annotatedImageId} />
       )}

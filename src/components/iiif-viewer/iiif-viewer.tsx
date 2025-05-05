@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import { Viewer as OSDViewer } from "openseadragon";
 import { useContext, useEffect, useRef, useState } from "react";
 import tinyColor2 from "tinycolor2";
-import AdditionalControls from "../additional-controls/additional-controls";
 import PinchToZoomIndicator from "../pinch-to-zoom-indicator/pinch-to-zoom-indicator";
 
 // TODO: Loading skeleton
@@ -29,10 +28,10 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   // TODO: remove once we no longer need mock data for testing
-  // const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
+  const iiifContent = `${process.env.NEXT_PUBLIC_URL}/birds-eye-boston.json`;
 
   // TODO: base content off of ENV variable?
-  const iiifContent = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
+  // const iiifContent = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
   // TODO: base colors off of ENV variables?
   const customTheme = {
@@ -85,9 +84,9 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
       className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white"
     >
       {/* Addditional Controls (bottom right of the screen) */}
-      <div className="absolute bottom-0 right-[8.75rem] z-[9]">
+      {/* <div className="absolute bottom-0 right-[8.75rem] z-[9]">
         <AdditionalControls />
-      </div>
+      </div> */}
 
       {/* Pinch-To-Zoom Indicator */}
       <div className="pointer-events-none absolute right-0 top-0 z-[9] mt-36 flex h-[100dvh] w-[100dvw] items-center justify-center">
@@ -143,7 +142,6 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
             gestureSettingsMouse: {
               scrollToZoom: true,
             },
-            // pinchZoom: true,
           },
         }}
       />

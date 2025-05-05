@@ -8,8 +8,8 @@ import { createContext, useState } from "react";
 
 const initialMuseumObjectState: MuseumObjectState = {
   manifestData: undefined,
-  attractModeActive: true,
-  pinchToZoomIndicatorActive: true,
+  attractModeActive: false,
+  pinchToZoomIndicatorActive: false,
   activeLanguage: "en",
 };
 
