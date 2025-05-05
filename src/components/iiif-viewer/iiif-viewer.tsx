@@ -112,20 +112,20 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
           },
           annotationOverlays: {
             backgroundColor:
-              museumObjectState.objectMetadata?.annotation_color ?? "",
+              museumObjectState.objectMetadata?.annotation_color ?? "#ff0000",
             borderWidth: "10px",
             borderType: "solid",
             borderColor: tinyColor2(
-              museumObjectState.objectMetadata?.annotation_color ?? "",
+              museumObjectState.objectMetadata?.annotation_color ?? "#ff0000",
             )
               .setAlpha(0.5)
               .toRgbString(),
             highlightedBackgroundColor:
               museumObjectState.objectMetadata?.annotation_highlight_color ??
-              "",
+              "#f9cf48",
             highlightedBorderColor: tinyColor2(
               museumObjectState.objectMetadata?.annotation_highlight_color ??
-                "",
+                "#f9cf48",
             )
               .setAlpha(0.5)
               .toRgbString(),
