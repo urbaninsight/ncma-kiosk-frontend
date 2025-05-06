@@ -36,7 +36,7 @@ export default function LanguageButton() {
 
   return (
     <button
-      className="additional-controls-button flex h-8 w-32 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-black hover:bg-white hover:text-black"
+      className="additional-controls-button hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange flex h-8 w-32 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white"
       onClick={onLanguageClick}
       onTouchStart={onLanguageClick}
     >

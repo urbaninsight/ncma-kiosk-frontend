@@ -21,7 +21,7 @@ export default function AdditionalControls() {
 
   return (
     <div className="flex flex-row items-center justify-center space-x-[0.618rem] rounded-lg p-4">
-      <div className="w-max-content mr-8 flex h-8 items-center justify-center rounded-md bg-black px-[18px] py-[15px] text-white">
+      <div className="additional-controls-instruction w-max-content mr-8 flex h-8 items-center justify-center rounded-md bg-black px-[18px] py-[15px] text-white">
         <span className="mr-4 text-lg">
           <PinchToZoomIcon className="h-6 w-6" />
         </span>
@@ -31,13 +31,13 @@ export default function AdditionalControls() {
       <LanguageButton />
 
       <button
-        className="additional-controls-button w-max-content group flex h-8 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-black hover:bg-white hover:text-black"
+        className="additional-controls-button w-max-content hover:text-ncmaOrange hover:border-ncmaOrange hover:bg-ncmaDarkOrange group flex h-10 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white"
         onClick={onLearnMoreClick}
         onTouchStart={onLearnMoreClick}
       >
         <span className="mr-4 text-lg">
           <InfoSpeechBubbleIcon
-            className="h-5 w-5 fill-white group-hover:fill-black"
+            className="group-hover:fill-ncmaOrange h-5 w-5 fill-white"
             fill="inherit"
           />
         </span>

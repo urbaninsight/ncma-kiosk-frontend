@@ -14,6 +14,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        ncmaOrange: "rgb(224, 89, 42)",
+        ncmaDarkOrange: "rgb(61, 17, 13)",
       },
     },
   },
