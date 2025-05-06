@@ -31,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={caseFont.variable}>
-      <body className="overflow-hidden font-sans">{children}</body>
+      <body className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-500 overflow-hidden font-sans">
+        {children}
+      </body>
     </html>
   );
 }
