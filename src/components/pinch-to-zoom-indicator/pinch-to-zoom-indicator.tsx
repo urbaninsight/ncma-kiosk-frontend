@@ -64,7 +64,7 @@ export default function PinchToZoomIndicator({
     <div
       className={`transition-opacity duration-700 ease-in-out ${museumObjectState.pinchToZoomIndicatorActive ? "opacity-100" : "opacity-0"}`}
     >
-      <PinchToZoomIcon className="animate-pulse" />
+      <PinchToZoomIcon className="h-32 w-32 animate-pulse" />
     </div>
   );
 }

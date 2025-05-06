@@ -143,7 +143,7 @@ export default function AttractModeContent() {
 
         {/* User Instructions */}
         <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
-          <HandTouchIcon />
+          <HandTouchIcon className="h-32 w-32" />
 
           <span aria-hidden="true">Touch anywhere to explore</span>
           <span className="sr-only">
