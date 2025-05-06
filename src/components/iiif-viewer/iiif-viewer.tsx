@@ -130,7 +130,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
               .setAlpha(0.5)
               .toRgbString(),
             opacity: "1",
-            zoomLevel: 24,
+            zoomLevel: 12,
           },
           openSeadragon: {
             // scrollZoom: true,
@@ -142,6 +142,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
             gestureSettingsMouse: {
               scrollToZoom: true,
             },
+            maxZoomLevel: 2.5,
           },
         }}
       />
