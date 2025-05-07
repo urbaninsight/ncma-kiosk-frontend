@@ -90,9 +90,11 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
       </div>
 
       {/* Pinch-To-Zoom Indicator */}
-      <div className="pointer-events-none absolute right-0 top-0 z-[9] mt-36 flex h-[100dvh] w-[100dvw] items-center justify-center">
-        <PinchToZoomIndicator viewerRef={viewerRef} />
-      </div>
+      {museumObjectState.kioskMode && (
+        <div className="pointer-events-none absolute right-0 top-0 z-[9] mt-36 flex h-[100dvh] w-[100dvw] items-center justify-center">
+          <PinchToZoomIndicator viewerRef={viewerRef} />
+        </div>
+      )}
 
       {/* Viewer */}
       <Viewer

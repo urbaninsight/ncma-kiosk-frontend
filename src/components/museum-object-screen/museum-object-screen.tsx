@@ -1,9 +1,9 @@
 "use client";
 
 import { MuseumObjectContext } from "@/context/museum-object-context";
-import { MuseumObjectState } from "@/interfaces/MuseumObjectContext";
 import { MuseumObjectMetadata } from "@/interfaces/MuseumObjectMetadata";
 import { Manifest } from "@iiif/presentation-3";
+import { useSearchParams } from "next/navigation";
 import { useContext, useEffect } from "react";
 import AttractMode from "../attract-mode/attract-mode";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
@@ -18,8 +18,19 @@ export default function MuseumObjectScreen({
   const { museumObjectState, setMuseumObjectState } =
     useContext(MuseumObjectContext);
 
-  // Fetch manifest data and store it in context
+  const searchParams = useSearchParams();
+  const kiosk = searchParams.get("kiosk");
+
   useEffect(() => {
+    // Set kiosk mode
+    setMuseumObjectState((prev) => ({
+      ...prev,
+      kioskMode: kiosk === "true",
+      attractModeActive: kiosk === "true",
+    }));
+
+    // Fetch manifest data and store it in context
+
     // TODO: remove once we no longer need mock data for testing
     // const iiifUrl = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
     const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
@@ -37,12 +48,11 @@ export default function MuseumObjectScreen({
           objectMetadataResponseRaw.json(),
         ]);
 
-        const newState: MuseumObjectState = {
-          ...museumObjectState,
+        setMuseumObjectState((prev) => ({
+          ...prev,
           manifestData: iiifResponse as Manifest,
           objectMetadata: objectMetadataResponse as MuseumObjectMetadata,
-        };
-        setMuseumObjectState(newState);
+        }));
       };
       fetchData();
     } catch (error) {

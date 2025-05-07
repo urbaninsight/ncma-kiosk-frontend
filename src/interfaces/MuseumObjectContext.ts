@@ -15,4 +15,5 @@ export interface MuseumObjectState {
   attractModeActive: boolean;
   pinchToZoomIndicatorActive: boolean;
   activeLanguage: "en" | "es";
+  kioskMode: boolean;
 }

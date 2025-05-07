@@ -43,10 +43,10 @@ export default function AttractModeContent() {
 
   // Handle user interaction
   const handleUserInteraction = () => {
-    if (museumObjectState.attractModeActive) {
-      stopAttractMode();
+    stopAttractMode();
+    if (museumObjectState.kioskMode) {
+      resetInactivityTimer();
     }
-    resetInactivityTimer();
   };
 
   // Set up event listeners for user interaction
@@ -57,7 +57,9 @@ export default function AttractModeContent() {
     });
 
     // Start the initial inactivity timer
-    resetInactivityTimer();
+    if (museumObjectState.kioskMode) {
+      resetInactivityTimer();
+    }
 
     // Clean up event listeners and timer
     return () => {
@@ -80,10 +82,12 @@ export default function AttractModeContent() {
   }, [museumObjectState.attractModeActive]);
 
   // TODO: Reset IIIF to default state on animation end
+  // TODO: prevent slideout on inital load when kiosk mode is false
   return (
     <div
       tabIndex={museumObjectState.attractModeActive ? 0 : -1}
       className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut ? "attract-mode-slide-out" : ""}`}
+      onClick={handleUserInteraction}
     >
       {/* Language Button */}
       {museumObjectState.attractModeActive && (
@@ -97,16 +101,18 @@ export default function AttractModeContent() {
         {/* Video + Text */}
         <div className="mb-6 flex flex-row justify-center gap-x-8 px-[108px]">
           {/* Video */}
-          <div className="flex flex-1 overflow-hidden">
-            {museumObjectState.objectMetadata?.description_video && (
-              <div
-                className="flex items-center justify-center"
-                dangerouslySetInnerHTML={{
-                  __html: museumObjectState.objectMetadata.description_video,
-                }}
-              ></div>
-            )}
-          </div>
+          {museumObjectState.kioskMode && (
+            <div className="flex flex-1 overflow-hidden">
+              {museumObjectState.objectMetadata?.description_video && (
+                <div
+                  className="flex items-center justify-center"
+                  dangerouslySetInnerHTML={{
+                    __html: museumObjectState.objectMetadata.description_video,
+                  }}
+                ></div>
+              )}
+            </div>
+          )}
 
           {/* Text */}
           {!!museumObjectState.manifestData?.label?.[
@@ -142,10 +148,16 @@ export default function AttractModeContent() {
         </div>
 
         {/* User Instructions */}
-        <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
-          <HandTouchIcon className="h-32 w-32" />
 
-          <span aria-hidden="true">Touch anywhere to explore</span>
+        <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
+          {museumObjectState.kioskMode && (
+            <HandTouchIcon className="h-32 w-32" />
+          )}
+
+          <span aria-hidden="true">
+            {museumObjectState.kioskMode ? "Touch" : "Click"} anywhere to
+            explore
+          </span>
           <span className="sr-only">
             Click anywhere or press enter to explore
           </span>
