@@ -1,4 +1,5 @@
 import MuseumObjectScreen from "@/components/museum-object-screen/museum-object-screen";
+import SuspenseWrapper from "@/components/suspense-wrapper/suspense-wrapper";
 import MuseumObjectContextWrapper from "@/context/museum-object-context";
 
 interface AnnotatedImagePageProps {
@@ -14,7 +15,9 @@ export default async function AnnotatedImagePage({
 
   return (
     <MuseumObjectContextWrapper>
-      <MuseumObjectScreen annotatedImageId={annotatedImageId} />
+      <SuspenseWrapper>
+        <MuseumObjectScreen annotatedImageId={annotatedImageId} />
+      </SuspenseWrapper>
     </MuseumObjectContextWrapper>
   );
 }

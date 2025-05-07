@@ -4,7 +4,7 @@ import { MuseumObjectContext } from "@/context/museum-object-context";
 import { MuseumObjectMetadata } from "@/interfaces/MuseumObjectMetadata";
 import { Manifest } from "@iiif/presentation-3";
 import { useSearchParams } from "next/navigation";
-import { useContext, useEffect } from "react";
+import { Suspense, useContext, useEffect } from "react";
 import AttractMode from "../attract-mode/attract-mode";
 import IIIFViewer from "../iiif-viewer/iiif-viewer";
 
@@ -61,11 +61,11 @@ export default function MuseumObjectScreen({
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <AttractMode />
       {museumObjectState.manifestData && (
         <IIIFViewer annotatedImageId={annotatedImageId} />
       )}
-    </>
+    </Suspense>
   );
 }
