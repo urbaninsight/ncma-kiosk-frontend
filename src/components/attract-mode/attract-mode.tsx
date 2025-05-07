@@ -14,6 +14,7 @@ export default function AttractModeContent() {
     useContext(MuseumObjectContext);
   const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null); // Use a ref for the timer
   const [isSlidingOut, setIsSlidingOut] = useState(false);
+  const [firstSlideDone, setFirstSlideDone] = useState(false);
 
   const startAttractMode = () => {
     setMuseumObjectState((prev) => ({
@@ -86,7 +87,12 @@ export default function AttractModeContent() {
   return (
     <div
       tabIndex={museumObjectState.attractModeActive ? 0 : -1}
-      className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut ? "attract-mode-slide-out" : ""}`}
+      className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || museumObjectState.kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !museumObjectState.kioskMode ? "attract-mode-out" : ""}`}
+      onAnimationEnd={() => {
+        if (isSlidingOut) {
+          setFirstSlideDone(true);
+        }
+      }}
       onClick={handleUserInteraction}
     >
       {/* Language Button */}

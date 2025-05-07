@@ -96,6 +96,11 @@ body {
 .attract-mode-slide-out {
   animation: slideOutToRight 1s ease-in-out forwards;
 }
+
+/* Class for hiding attract mode initially when not in kiosk mode*/
+.attract-mode-out {
+  animation: slideOutToRight 0s ease-in-out forwards;
+}
 /* END ANIMATIONS */
 
 /* ADDITIONAL CONTROLS STYLES */
