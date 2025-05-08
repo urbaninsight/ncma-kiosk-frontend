@@ -16,6 +16,14 @@ export default function AttractModeContent() {
   const [isSlidingOut, setIsSlidingOut] = useState(false);
   const [firstSlideDone, setFirstSlideDone] = useState(false);
 
+  const {
+    kioskMode,
+    activeLanguage,
+    manifestData,
+    attractModeActive,
+    objectMetadata,
+  } = museumObjectState;
+
   const startAttractMode = () => {
     setMuseumObjectState((prev) => ({
       ...prev,
@@ -45,7 +53,7 @@ export default function AttractModeContent() {
   // Handle user interaction
   const handleUserInteraction = () => {
     stopAttractMode();
-    if (museumObjectState.kioskMode) {
+    if (kioskMode) {
       resetInactivityTimer();
     }
   };
@@ -58,7 +66,7 @@ export default function AttractModeContent() {
     });
 
     // Start the initial inactivity timer
-    if (museumObjectState.kioskMode) {
+    if (kioskMode) {
       resetInactivityTimer();
     }
 
@@ -75,19 +83,19 @@ export default function AttractModeContent() {
 
   // Slide attract mode in/out depending on attractModeActive state
   useEffect(() => {
-    if (museumObjectState.attractModeActive) {
+    if (attractModeActive) {
       setIsSlidingOut(false);
     } else {
       setIsSlidingOut(true);
     }
-  }, [museumObjectState.attractModeActive]);
+  }, [attractModeActive]);
 
   // TODO: Reset IIIF to default state on animation end
   // TODO: prevent slideout on inital load when kiosk mode is false
   return (
     <div
-      tabIndex={museumObjectState.attractModeActive ? 0 : -1}
-      className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || museumObjectState.kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !museumObjectState.kioskMode ? "attract-mode-out" : ""}`}
+      tabIndex={attractModeActive ? 0 : -1}
+      className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !kioskMode ? "attract-mode-out" : ""}`}
       onAnimationEnd={() => {
         if (isSlidingOut) {
           setFirstSlideDone(true);
@@ -96,7 +104,7 @@ export default function AttractModeContent() {
       onClick={handleUserInteraction}
     >
       {/* Language Button */}
-      {museumObjectState.attractModeActive && (
+      {attractModeActive && (
         <div className="absolute bottom-4 right-4 z-[11]">
           <LanguageButton />
         </div>
@@ -107,13 +115,13 @@ export default function AttractModeContent() {
         {/* Video + Text */}
         <div className="mb-6 flex flex-row justify-center gap-x-8 px-[108px]">
           {/* Video */}
-          {museumObjectState.kioskMode && (
+          {kioskMode && (
             <div className="flex flex-1 overflow-hidden">
-              {museumObjectState.objectMetadata?.description_video && (
+              {objectMetadata?.description_video && (
                 <div
                   className="flex items-center justify-center"
                   dangerouslySetInnerHTML={{
-                    __html: museumObjectState.objectMetadata.description_video,
+                    __html: objectMetadata.description_video,
                   }}
                 ></div>
               )}
@@ -121,31 +129,21 @@ export default function AttractModeContent() {
           )}
 
           {/* Text */}
-          {!!museumObjectState.manifestData?.label?.[
-            museumObjectState.activeLanguage
-          ]?.length &&
-            !!museumObjectState.manifestData?.summary?.[
-              museumObjectState.activeLanguage
-            ]?.length && (
+          {!!manifestData?.label?.[activeLanguage]?.length &&
+            !!manifestData?.summary?.[activeLanguage]?.length && (
               <div className="flex flex-1">
                 <div>
                   <h1
                     className="mb- z-[11] text-3xl font-semibold leading-[100%]"
                     dangerouslySetInnerHTML={{
-                      __html:
-                        museumObjectState.manifestData.label[
-                          museumObjectState.activeLanguage
-                        ] ?? "",
+                      __html: manifestData.label[activeLanguage] ?? "",
                     }}
                   ></h1>
                   {/* TODO: There's way too much text, so I set it to text-xl. If the client wants to reduce the amount of text, we can set it back to 28px */}
                   <div
                     className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-xl font-light leading-[120%]"
                     dangerouslySetInnerHTML={{
-                      __html:
-                        museumObjectState.manifestData.summary[
-                          museumObjectState.activeLanguage
-                        ] ?? "",
+                      __html: manifestData.summary[activeLanguage] ?? "",
                     }}
                   ></div>
                 </div>
@@ -156,14 +154,13 @@ export default function AttractModeContent() {
         {/* User Instructions */}
 
         <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
-          {museumObjectState.kioskMode && (
-            <HandTouchIcon className="h-32 w-32" />
-          )}
+          {kioskMode && <HandTouchIcon className="h-32 w-32" />}
 
+          {/* TODO: */}
           <span aria-hidden="true">
-            {museumObjectState.kioskMode ? "Touch" : "Click"} anywhere to
-            explore
+            {kioskMode ? "Touch" : "Click"} anywhere to explore
           </span>
+          {/* TODO: */}
           <span className="sr-only">
             Click anywhere or press enter to explore
           </span>
