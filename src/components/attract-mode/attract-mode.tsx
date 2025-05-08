@@ -1,5 +1,6 @@
 "use client";
 
+import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
@@ -156,13 +157,15 @@ export default function AttractModeContent() {
         <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
           {kioskMode && <HandTouchIcon className="h-32 w-32" />}
 
-          {/* TODO: */}
           <span aria-hidden="true">
-            {kioskMode ? "Touch" : "Click"} anywhere to explore
+            {kioskMode
+              ? translations[activeLanguage].touch
+              : translations[activeLanguage].click}{" "}
+            {translations[activeLanguage].anywhereToExplore}
           </span>
-          {/* TODO: */}
+
           <span className="sr-only">
-            Click anywhere or press enter to explore
+            {translations[activeLanguage].clickAnywhereToExploreScreenReader}
           </span>
         </div>
       </div>

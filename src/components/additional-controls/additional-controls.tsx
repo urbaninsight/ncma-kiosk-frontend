@@ -1,3 +1,4 @@
+import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import { useContext } from "react";
 import InfoSpeechBubbleIcon from "../icons/info-speech-bubble";
@@ -20,6 +21,8 @@ export default function AdditionalControls() {
     }));
   };
 
+  const { activeLanguage } = museumObjectState;
+
   return (
     <div className="flex flex-row items-center justify-center space-x-[0.618rem] rounded-lg p-4">
       {museumObjectState.kioskMode && (
@@ -27,7 +30,7 @@ export default function AdditionalControls() {
           <span className="mr-4 text-lg">
             <PinchToZoomIcon className="h-6 w-6" />
           </span>
-          <span>Pinch to zoom</span>
+          <span>{translations[activeLanguage].pinchToZoom}</span>
         </div>
       )}
 
@@ -44,7 +47,7 @@ export default function AdditionalControls() {
             fill="inherit"
           />
         </span>
-        <span>Learn more</span>
+        <span>{translations[activeLanguage].learnMore}</span>
       </button>
     </div>
   );
