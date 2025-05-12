@@ -116,7 +116,9 @@ body {
 }
 /* END ADDITIONAL CONTROLS STYLES */
 
+/* Allow for scrollbar styles to be overridden */
 * {
   scrollbar-color: unset;
   scrollbar-width: unset;
 }
+/* END Allow for scrollbar styles to be overridden */

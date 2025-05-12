@@ -36,11 +36,14 @@ export default function LanguageButton() {
 
   return (
     <button
-      className="additional-controls-button hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange flex h-10 w-32 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white"
+      className="additional-controls-button cloverXs:w-32 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange"
       onClick={onLanguageClick}
       onTouchStart={onLanguageClick}
     >
-      <span>{languageButtonText}</span>
+      <span className="cloverXs:block hidden">{languageButtonText}</span>
+      <span className="cloverXs:hidden block uppercase">
+        {museumObjectState.activeLanguage}
+      </span>
     </button>
   );
 }
