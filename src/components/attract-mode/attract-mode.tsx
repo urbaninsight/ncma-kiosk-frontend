@@ -86,6 +86,9 @@ export default function AttractModeContent() {
   useEffect(() => {
     if (attractModeActive) {
       setIsSlidingOut(false);
+
+      // Prevents slideout animation from happening on load when kiosk mode is false
+      setFirstSlideDone(true);
     } else {
       setIsSlidingOut(true);
     }
@@ -97,11 +100,6 @@ export default function AttractModeContent() {
     <div
       tabIndex={attractModeActive ? 0 : -1}
       className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !kioskMode ? "attract-mode-out" : ""}`}
-      onAnimationEnd={() => {
-        if (isSlidingOut) {
-          setFirstSlideDone(true);
-        }
-      }}
       onClick={handleUserInteraction}
     >
       {/* Language Button */}
