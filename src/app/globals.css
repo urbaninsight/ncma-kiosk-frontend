@@ -116,16 +116,24 @@ body {
 }
 /* END ADDITIONAL CONTROLS STYLES */
 
-/* Allow for scrollbar styles to be overridden */
+/* Scrollbar styles */
+/* Remove the unset of scrollbar properties */
 * {
-  scrollbar-color: unset;
-  scrollbar-width: unset;
+  /* Remove these lines as they prevent Firefox styling */
+  /* scrollbar-color: unset; */
+  /* scrollbar-width: unset; */
 }
-/* END Allow for scrollbar styles to be overridden */
 
-/* Fix scrollbar styles for Safari */
+/* Cross-browser scrollbar styles */
+* {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+/* Webkit/Chromium browsers */
 ::-webkit-scrollbar {
-  width: 12px; /* slightly wider to accommodate margin */
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -135,11 +143,16 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #d1d5db;
   border-radius: 6px;
-  border: 2px solid transparent; /* Creates space around the thumb */
-  background-clip: padding-box; /* Ensures the background doesn't show through the border */
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 @media (prefers-color-scheme: dark) {
+  * {
+    /* Firefox dark mode */
+    scrollbar-color: #6b7280 transparent;
+  }
+
   ::-webkit-scrollbar-thumb {
     background-color: #6b7280;
   }
