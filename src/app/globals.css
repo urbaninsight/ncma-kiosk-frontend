@@ -122,3 +122,26 @@ body {
   scrollbar-width: unset;
 }
 /* END Allow for scrollbar styles to be overridden */
+
+/* Fix scrollbar styles for Safari */
+::-webkit-scrollbar {
+  width: 12px; /* slightly wider to accommodate margin */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 6px;
+  border: 2px solid transparent; /* Creates space around the thumb */
+  background-clip: padding-box; /* Ensures the background doesn't show through the border */
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+  }
+}
+/* END Fix scrollbar styles for Safari */
