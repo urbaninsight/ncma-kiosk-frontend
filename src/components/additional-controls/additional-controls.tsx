@@ -38,8 +38,7 @@ export default function AdditionalControls() {
 
       <button
         className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange cloverXs:w-auto cloverXs:px-[18px]"
-        onClick={onLearnMoreClick}
-        style={{ touchAction: "manipulation" }}
+        onPointerUp={onLearnMoreClick}
       >
         <span className="text-lg cloverXs:mr-4">
           <InfoSpeechBubbleIcon
