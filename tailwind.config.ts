@@ -14,7 +14,7 @@ export default {
         sans: ["var(--font-case)", "sans-serif"],
       },
       screens: {
-        cloverXs: "575px",
+        cloverSm: "768px",
       },
       colors: {
         background: "var(--background)",
