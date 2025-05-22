@@ -2,7 +2,7 @@
 
 import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
 
@@ -52,7 +52,13 @@ export default function AttractModeContent() {
   };
 
   // Handle user interaction
-  const handleUserInteraction = () => {
+  const handleUserInteraction = (event: Event) => {
+    // Don't close attract mode if clicking the learn more or language buttons
+    const target = event.target as HTMLElement;
+    if (target?.closest('.additional-controls-button')) {
+      return;
+    }
+    
     stopAttractMode();
     if (kioskMode) {
       resetInactivityTimer();
@@ -100,7 +106,7 @@ export default function AttractModeContent() {
     <div
       tabIndex={attractModeActive ? 0 : -1}
       className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !kioskMode ? "attract-mode-out" : ""}`}
-      onClick={handleUserInteraction}
+      onClick={(e: React.MouseEvent) => handleUserInteraction(e.nativeEvent)}
     >
       {/* Language Button */}
       {attractModeActive && (
