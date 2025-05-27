@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
 
-const ATTRACT_MODE_TIMEOUT_MINUTES = 3;
+const ATTRACT_MODE_TIMEOUT_MINUTES = 1.5;
 const ATTRACT_MODE_TIMEOUT_MILLISECONDS =
   ATTRACT_MODE_TIMEOUT_MINUTES * 60 * 1000;
 
