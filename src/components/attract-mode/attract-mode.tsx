@@ -146,7 +146,7 @@ export default function AttractModeContent() {
                   ></h1>
                   {/* TODO: There's way too much text, so I set it to text-xl. If the client wants to reduce the amount of text, we can set it back to 28px */}
                   <div
-                    className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-xl font-light leading-[120%]"
+                    className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
                     dangerouslySetInnerHTML={{
                       __html: manifestData.summary[activeLanguage] ?? "",
                     }}
