@@ -6,11 +6,9 @@ interface PinchToZoomIndicatorProps {
   viewerRef: React.RefObject<HTMLDivElement>;
 }
 
-// TODO: pass viewer ref
 export default function PinchToZoomIndicator({
   viewerRef,
 }: PinchToZoomIndicatorProps) {
-  // TODO: stop displaying once user interacts with the viewer
   const { museumObjectState, setMuseumObjectState } =
     useContext(MuseumObjectContext);
 
@@ -60,7 +58,6 @@ export default function PinchToZoomIndicator({
   }, []);
 
   return (
-    // TODO: implement proper size and color
     <div
       className={`transition-opacity duration-700 ease-in-out ${museumObjectState.pinchToZoomIndicatorActive ? "opacity-100" : "opacity-0"}`}
     >

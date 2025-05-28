@@ -1,5 +1,3 @@
-// TODO: Update these interfaces to match the actual API response as it changes
-
 export interface ObjectMetadataMultilingualText {
   en: string;
   es: string;

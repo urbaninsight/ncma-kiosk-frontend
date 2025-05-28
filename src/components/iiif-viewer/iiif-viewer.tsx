@@ -28,13 +28,8 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
 
   const viewerRef = useRef<HTMLDivElement>(null);
 
-  // TODO: remove once we no longer need mock data for testing
-  // const iiifContent = `${process.env.NEXT_PUBLIC_URL}/test-wimpel-manifest.json`;
-
-  // TODO: base content off of ENV variable?
   const iiifContent = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
 
-  // TODO: base colors off of ENV variables?
   const customTheme = {
     colors: {
       /**
@@ -85,7 +80,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
       className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white"
     >
       {/* Addditional Controls (bottom right of the screen) */}
-      <div className="cloverSm:bottom-0 cloverSm:right-[10.25rem] cloverSm:top-[unset] absolute right-[1px] top-[162px] z-[9]">
+      <div className="absolute right-[1px] top-[162px] z-[9] cloverSm:bottom-0 cloverSm:right-[10.25rem] cloverSm:top-[unset]">
         <AdditionalControls />
       </div>
 

@@ -100,8 +100,6 @@ export default function AttractModeContent() {
     }
   }, [attractModeActive]);
 
-  // TODO: Reset IIIF to default state on animation end
-  // TODO: prevent slideout on inital load when kiosk mode is false
   return (
     <div
       tabIndex={attractModeActive ? 0 : -1}
@@ -144,7 +142,7 @@ export default function AttractModeContent() {
                       __html: manifestData.label[activeLanguage] ?? "",
                     }}
                   ></h1>
-                  {/* TODO: There's way too much text, so I set it to text-xl. If the client wants to reduce the amount of text, we can set it back to 28px */}
+
                   <div
                     className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
                     dangerouslySetInnerHTML={{
