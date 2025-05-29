@@ -5,6 +5,8 @@
  */
 import { NextResponse } from "next/server";
 
+export const runtime = "edge"; // API routes don't work on Cloudflare Pages without this
+
 const DRUPAL_API_BASE = process.env.NEXT_PUBLIC_DRUPAL_API_URL;
 
 // Basic auth headers
