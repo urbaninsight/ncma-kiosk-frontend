@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@samvera/clover-iiif": "git+https://git@github.com/joseph-bayer/clover-iiif.git#clover-iiif-fork",
@@ -18,6 +21,8 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.12",
+    "@cloudflare/workers-types": "^4.20250529.0",
     "@eslint/eslintrc": "^3",
     "@iiif/presentation-3": "^2.2.3",
     "@types/node": "^20",
