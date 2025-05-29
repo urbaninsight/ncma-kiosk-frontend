@@ -137,14 +137,14 @@ export default function AttractModeContent() {
               <div className="flex flex-1">
                 <div>
                   <h1
-                    className="mb- z-[11] text-3xl font-semibold leading-[100%]"
+                    className="z-[11] text-3xl font-semibold leading-[100%]"
                     dangerouslySetInnerHTML={{
                       __html: manifestData.label[activeLanguage] ?? "",
                     }}
                   ></h1>
 
                   <div
-                    className="xtext-[28px] mt-4 flex flex-col gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
+                    className="mt-4 flex flex-col gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
                     dangerouslySetInnerHTML={{
                       __html: manifestData.summary[activeLanguage] ?? "",
                     }}
