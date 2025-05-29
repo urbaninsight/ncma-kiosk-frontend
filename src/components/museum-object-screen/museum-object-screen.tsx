@@ -30,14 +30,26 @@ export default function MuseumObjectScreen({
     }));
 
     // Fetch manifest data and store it in context
-    const iiifUrl = `/api/manifest?id=${annotatedImageId}`;
-    const objectMetadataUrl = `/api/metadata?id=${annotatedImageId}`;
+    const iiifUrl = `/api/manifest`;
+    const objectMetadataUrl = `/api/metadata`;
 
     try {
       const fetchData = async () => {
         const [iiifResponseRaw, objectMetadataResponseRaw] = await Promise.all([
-          fetch(iiifUrl),
-          fetch(objectMetadataUrl),
+          fetch(iiifUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: annotatedImageId }),
+          }),
+          fetch(objectMetadataUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: annotatedImageId }),
+          }),
         ]);
         const [iiifResponse, objectMetadataResponse] = await Promise.all([
           iiifResponseRaw.json(),

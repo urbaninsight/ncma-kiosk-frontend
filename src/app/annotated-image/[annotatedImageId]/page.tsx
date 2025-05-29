@@ -23,9 +23,26 @@ export default async function AnnotatedImagePage({
 }
 
 export async function generateStaticParams() {
+  // Create basic auth headers for direct Drupal API call
+  const credentials = Buffer.from(
+    `${process.env.WP_API_UNAME}:${process.env.WP_API_PASS}`,
+  ).toString("base64");
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image`,
+    {
+      headers: {
+        Authorization: `Basic ${credentials}`,
+      },
+      cache: "force-cache",
+    },
   );
+
+  if (!res.ok) {
+    console.error("Failed to fetch annotated image IDs");
+    return [{ annotatedImageId: "13" }]; // Fallback to default ID
+  }
+
   const data = await res.json();
 
   return data.map((id: number) => ({
