@@ -1,3 +1,5 @@
+import { Buffer } from "buffer";
+
 export interface Env {
   WP_API_UNAME: string;
   WP_API_PASS: string;
