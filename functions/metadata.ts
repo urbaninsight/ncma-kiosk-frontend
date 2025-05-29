@@ -1,7 +1,7 @@
 import {
   PagesFunction,
   Response as WorkerResponse,
-} from "@cloudflare/workers-types";
+} from "@cloudflare/workers-types/experimental";
 
 export interface Env {
   WP_API_UNAME: string;
