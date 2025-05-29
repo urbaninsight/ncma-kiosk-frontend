@@ -1,4 +1,7 @@
-import { PagesFunction, Response } from "@cloudflare/workers-types";
+import {
+  PagesFunction,
+  Response as WorkerResponse,
+} from "@cloudflare/workers-types";
 
 export interface Env {
   WP_API_UNAME: string;
@@ -11,12 +14,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const id = searchParams.get("id");
 
   if (!id) {
-    return new Response(JSON.stringify({ error: "Missing id parameter" }), {
-      status: 400,
-      headers: {
-        "Content-Type": "application/json",
+    return new WorkerResponse(
+      JSON.stringify({ error: "Missing id parameter" }),
+      {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
   }
 
   // Create basic auth headers
@@ -39,7 +45,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     }
 
     const data = await response.json();
-    return new Response(JSON.stringify(data), {
+    return new WorkerResponse(JSON.stringify(data), {
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "public, max-age=31536000",
@@ -47,11 +53,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     });
   } catch (error) {
     console.error("Error fetching from Drupal:", error);
-    return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
-      status: 500,
-      headers: {
-        "Content-Type": "application/json",
+    return new WorkerResponse(
+      JSON.stringify({ error: "Failed to fetch data" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
   }
 };
