@@ -1,5 +1,3 @@
-import { Buffer } from "buffer";
-
 export interface Env {
   WP_API_UNAME: string;
   WP_API_PASS: string;
@@ -20,9 +18,9 @@ export const onRequest = async (context: any) => {
   }
 
   // Create basic auth headers
-  const credentials = Buffer.from(
+  const credentials = btoa(
     `${context.env.WP_API_UNAME}:${context.env.WP_API_PASS}`,
-  ).toString("base64");
+  );
 
   const url = `${context.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${id}/IIIF`;
 
