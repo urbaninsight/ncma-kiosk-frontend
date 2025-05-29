@@ -30,9 +30,8 @@ export default function MuseumObjectScreen({
     }));
 
     // Fetch manifest data and store it in context
-    const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
-
-    const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
+    const iiifUrl = `/api/manifest?id=${annotatedImageId}`;
+    const objectMetadataUrl = `/api/metadata?id=${annotatedImageId}`;
 
     try {
       const fetchData = async () => {
