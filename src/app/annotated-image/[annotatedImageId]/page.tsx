@@ -34,7 +34,7 @@ export async function generateStaticParams() {
       headers: {
         Authorization: `Basic ${credentials}`,
       },
-      cache: "force-cache",
+      next: { revalidate: 60 * 60 * 6 }, // Revalidate every 6 hours
     },
   );
 
