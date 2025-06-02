@@ -2,6 +2,7 @@
 
 import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
+import { sendGAEvent } from "@next/third-parties/google";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
@@ -16,6 +17,7 @@ export default function AttractModeContent() {
   const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null); // Use a ref for the timer
   const [isSlidingOut, setIsSlidingOut] = useState(false);
   const [firstSlideDone, setFirstSlideDone] = useState(false);
+  const [sendNewUserEvent, setSendNewUserEvent] = useState(true);
 
   const {
     kioskMode,
@@ -45,8 +47,13 @@ export default function AttractModeContent() {
       clearTimeout(inactivityTimerRef.current);
     }
 
+    const startAttractModeAndResetEvents = () => {
+      startAttractMode();
+      setSendNewUserEvent(true);
+    };
+
     inactivityTimerRef.current = setTimeout(
-      startAttractMode,
+      startAttractModeAndResetEvents,
       ATTRACT_MODE_TIMEOUT_MILLISECONDS,
     );
   };
@@ -97,6 +104,19 @@ export default function AttractModeContent() {
       setFirstSlideDone(true);
     } else {
       setIsSlidingOut(true);
+
+      // Send GA Event showing that a user has started using the kiosk
+      if (
+        kioskMode &&
+        process.env.NODE_ENV === "production" &&
+        sendNewUserEvent
+      ) {
+        sendGAEvent({
+          event: "touch_to_begin",
+          kiosk_title: `Annotated Image - ${manifestData?.label[activeLanguage]}`,
+        });
+        setSendNewUserEvent(false);
+      }
     }
   }, [attractModeActive]);
 
