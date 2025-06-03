@@ -164,7 +164,7 @@ export default function AttractModeContent() {
                   ></h1>
 
                   <div
-                    className="mt-4 flex flex-col gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
+                    className="mt-4 gap-y-4 text-base font-light leading-[120%] 2xl:text-xl"
                     dangerouslySetInnerHTML={{
                       __html: manifestData.summary[activeLanguage] ?? "",
                     }}
