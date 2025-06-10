@@ -7,12 +7,16 @@ export default function LanguageButton() {
   const { museumObjectState, setMuseumObjectState } =
     useContext(MuseumObjectContext);
   const [languageButtonText, setLanguageButtonText] = useState("Español");
+  const [mobileLanguageButtonText, setMobileLanguageButtonText] =
+    useState("EN");
 
   useEffect(() => {
     if (museumObjectState.activeLanguage === "en") {
       setLanguageButtonText("Español");
+      setMobileLanguageButtonText("ES");
     } else {
       setLanguageButtonText("English");
+      setMobileLanguageButtonText("EN");
     }
   }, [museumObjectState.activeLanguage]);
 
@@ -36,12 +40,12 @@ export default function LanguageButton() {
 
   return (
     <button
-      className="additional-controls-button cloverSm:w-32 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange"
+      className="additional-controls-button flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange cloverSm:w-32"
       onPointerUp={onLanguageClick}
     >
-      <span className="cloverSm:block hidden">{languageButtonText}</span>
-      <span className="cloverSm:hidden block uppercase">
-        {museumObjectState.activeLanguage}
+      <span className="hidden cloverSm:block">{languageButtonText}</span>
+      <span className="block uppercase cloverSm:hidden">
+        {mobileLanguageButtonText}
       </span>
     </button>
   );
