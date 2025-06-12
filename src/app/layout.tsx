@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={caseFont.variable}>
-      <GoogleAnalytics gaId="G-NTLN1QN8XK" />
+      <GoogleTagManager gtmId="GTM-TDRM6CNP" />
       <body className="overflow-hidden font-sans scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-500">
         {children}
       </body>

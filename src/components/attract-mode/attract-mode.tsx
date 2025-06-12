@@ -2,7 +2,7 @@
 
 import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
@@ -111,9 +111,9 @@ export default function AttractModeContent() {
         process.env.NODE_ENV === "production" &&
         sendNewUserEvent
       ) {
-        sendGAEvent({
+        sendGTMEvent({
           event: "touch_to_begin",
-          kiosk_title: `Annotated Image - ${manifestData?.label[activeLanguage]}`,
+          kiosk_title: `Annotated Image - ${manifestData?.label["en"]}`,
         });
         setSendNewUserEvent(false);
       }
