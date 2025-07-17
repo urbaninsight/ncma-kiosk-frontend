@@ -2,6 +2,7 @@
 
 import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
+import { useFocusTrap } from "@/utils/useFocusTrap";
 import { sendGTMEvent } from "@next/third-parties/google";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
@@ -27,22 +28,25 @@ export default function AttractModeContent() {
     objectMetadata,
   } = museumObjectState;
 
-  const startAttractMode = () => {
+  // Focus trap for accessibility
+  const focusTrapRef = useFocusTrap(attractModeActive);
+
+  const startAttractMode = React.useCallback(() => {
     setMuseumObjectState((prev) => ({
       ...prev,
       attractModeActive: true,
     }));
-  };
+  }, [setMuseumObjectState]);
 
-  const stopAttractMode = () => {
+  const stopAttractMode = React.useCallback(() => {
     setMuseumObjectState((prev) => ({
       ...prev,
       attractModeActive: false,
     }));
-  };
+  }, [setMuseumObjectState]);
 
   // Reset the inactivity timer
-  const resetInactivityTimer = () => {
+  const resetInactivityTimer = React.useCallback(() => {
     if (inactivityTimerRef.current) {
       clearTimeout(inactivityTimerRef.current);
     }
@@ -56,21 +60,33 @@ export default function AttractModeContent() {
       startAttractModeAndResetEvents,
       ATTRACT_MODE_TIMEOUT_MILLISECONDS,
     );
-  };
+  }, [startAttractMode]);
 
   // Handle user interaction
-  const handleUserInteraction = (event: Event) => {
-    // Don't close attract mode if clicking the learn more or language buttons
-    const target = event.target as HTMLElement;
-    if (target?.closest(".additional-controls-button")) {
-      return;
-    }
+  const handleUserInteraction = React.useCallback(
+    (event: Event) => {
+      // Don't close attract mode if clicking or tabbing to the learn more or language buttons
+      const target = event.target as HTMLElement;
+      console.log(target.closest(".additional-controls-button"));
+      if (
+        target.closest(".additional-controls-button") ||
+        (attractModeActive &&
+          event.type === "keydown" &&
+          (event as KeyboardEvent).key === "Tab")
+      ) {
+        return;
+      }
 
-    stopAttractMode();
-    if (kioskMode) {
-      resetInactivityTimer();
-    }
-  };
+      if (attractModeActive) {
+        stopAttractMode();
+      }
+
+      if (kioskMode) {
+        resetInactivityTimer();
+      }
+    },
+    [attractModeActive, kioskMode, stopAttractMode, resetInactivityTimer],
+  );
 
   // Set up event listeners for user interaction
   useEffect(() => {
@@ -93,7 +109,7 @@ export default function AttractModeContent() {
         clearTimeout(inactivityTimerRef.current);
       }
     };
-  }, []);
+  }, [handleUserInteraction, kioskMode, resetInactivityTimer]);
 
   // Slide attract mode in/out depending on attractModeActive state
   useEffect(() => {
@@ -118,13 +134,17 @@ export default function AttractModeContent() {
         setSendNewUserEvent(false);
       }
     }
-  }, [attractModeActive]);
+  }, [attractModeActive, kioskMode, manifestData?.label, sendNewUserEvent]);
 
   return (
     <div
+      ref={focusTrapRef}
       tabIndex={attractModeActive ? 0 : -1}
       className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !kioskMode ? "attract-mode-out" : ""}`}
       onClick={(e: React.MouseEvent) => handleUserInteraction(e.nativeEvent)}
+      aria-modal={attractModeActive}
+      role={attractModeActive ? "dialog" : undefined}
+      aria-label={attractModeActive ? "Welcome screen" : undefined}
     >
       {/* Language Button */}
       {attractModeActive && (
