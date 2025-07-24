@@ -2,6 +2,8 @@ export const translations = {
   en: {
     pinchToZoom: "Pinch to zoom",
     learnMore: "Learn more",
+    fullscreen: "Fullscreen",
+    exitFullscreen: "Exit fullscreen",
     touch: "Touch",
     click: "Click",
     anywhereToExplore: "anywhere to explore",
@@ -11,6 +13,8 @@ export const translations = {
   es: {
     pinchToZoom: "Pellizcar para hacer zoom",
     learnMore: "Más información",
+    fullscreen: "Pantalla completa",
+    exitFullscreen: "Salir de pantalla completa",
     touch: "Toca",
     click: "Haga clic en",
     anywhereToExplore: "cualquier lugar para explorar",

@@ -1,6 +1,10 @@
+"use client";
+
 import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import ExitFullscreenIcon from "../icons/exit-fullscreen";
+import FullscreenIcon from "../icons/fullscreen";
 import InfoSpeechBubbleIcon from "../icons/info-speech-bubble";
 import PinchToZoomIcon from "../icons/pinch-to-zoom";
 import LanguageButton from "../language-button/language-button";
@@ -9,6 +13,19 @@ import LanguageButton from "../language-button/language-button";
 export default function AdditionalControls() {
   const { museumObjectState, setMuseumObjectState } =
     useContext(MuseumObjectContext);
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
 
   const onLearnMoreClick = (event: any) => {
     // The attract mode has listeners for click events that close the attract mode.
@@ -19,6 +36,20 @@ export default function AdditionalControls() {
       ...prevState,
       attractModeActive: true,
     }));
+  };
+
+  const onFullscreenClick = () => {
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.error("Error entering fullscreen:", err);
+      });
+    } else {
+      // Exit fullscreen
+      document.exitFullscreen().catch((err) => {
+        console.error("Error exiting fullscreen:", err);
+      });
+    }
   };
 
   const { activeLanguage } = museumObjectState;
@@ -59,6 +90,38 @@ export default function AdditionalControls() {
           {translations[activeLanguage].learnMore}
         </span>
       </button>
+
+      {/* Fullscreen */}
+      {!museumObjectState.kioskMode && (
+        <button
+          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange cloverSm:w-auto cloverSm:px-[18px]"
+          onPointerUp={onFullscreenClick}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onFullscreenClick();
+            }
+          }}
+        >
+          <span className="text-lg cloverSm:mr-4">
+            {isFullscreen ? (
+              <ExitFullscreenIcon className="h-5 w-5 stroke-white group-hover:stroke-ncmaOrange" />
+            ) : (
+              <FullscreenIcon className="h-5 w-5 stroke-white group-hover:stroke-ncmaOrange" />
+            )}
+          </span>
+          <span className="hidden cloverSm:block">
+            {isFullscreen
+              ? translations[activeLanguage].exitFullscreen
+              : translations[activeLanguage].fullscreen}
+          </span>
+          <span className="sr-only">
+            {isFullscreen
+              ? translations[activeLanguage].exitFullscreen
+              : translations[activeLanguage].fullscreen}
+          </span>
+        </button>
+      )}
     </div>
   );
 }

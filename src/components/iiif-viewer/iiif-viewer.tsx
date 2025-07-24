@@ -80,7 +80,7 @@ export default function IIIFViewer({ annotatedImageId }: IIIFViewerProps) {
       className="flex h-[100dvh] w-[100dvw] flex-col items-center justify-center bg-black text-white"
     >
       {/* Addditional Controls (bottom right of the screen) */}
-      <div className="absolute right-[1px] top-[162px] z-[9] cloverSm:bottom-0 cloverSm:right-[10.25rem] cloverSm:top-[unset]">
+      <div className="absolute right-[1px] top-0 z-[9] cloverSm:bottom-0 cloverSm:right-[10.25rem] cloverSm:top-[unset]">
         <AdditionalControls />
       </div>
 
