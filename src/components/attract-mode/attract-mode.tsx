@@ -4,6 +4,7 @@ import { translations } from "@/assets/static-data/translations";
 import { MuseumObjectContext } from "@/context/museum-object-context";
 import { useFocusTrap } from "@/utils/useFocusTrap";
 import { sendGTMEvent } from "@next/third-parties/google";
+import clsx from "clsx";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import HandTouchIcon from "../icons/hand-touch";
 import LanguageButton from "../language-button/language-button";
@@ -151,7 +152,13 @@ export default function AttractModeContent() {
     <div
       ref={focusTrapRef}
       tabIndex={attractModeActive ? 0 : -1}
-      className={`attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white ${isSlidingOut && (firstSlideDone || kioskMode) ? "attract-mode-slide-out" : ""} ${isSlidingOut && !firstSlideDone && !kioskMode ? "attract-mode-out" : ""}`}
+      className={clsx(
+        "attract-mode absolute left-0 top-0 z-[10] flex h-[100dvh] w-[100dvw] cursor-pointer flex-col items-center justify-center gap-y-8 bg-black text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400",
+        isSlidingOut &&
+          (firstSlideDone || kioskMode) &&
+          "attract-mode-slide-out",
+        isSlidingOut && !firstSlideDone && !kioskMode && "attract-mode-out",
+      )}
       onClick={(e: React.MouseEvent) => handleUserInteraction(e.nativeEvent)}
       aria-modal={attractModeActive}
       role={attractModeActive ? "dialog" : undefined}
