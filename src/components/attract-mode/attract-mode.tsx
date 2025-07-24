@@ -28,8 +28,9 @@ export default function AttractModeContent() {
     objectMetadata,
   } = museumObjectState;
 
-  // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(attractModeActive);
+  // Focus trap for accessibility - delay focus until animation completes
+  const [shouldEnableFocusTrap, setShouldEnableFocusTrap] = useState(false);
+  const focusTrapRef = useFocusTrap(shouldEnableFocusTrap);
 
   const startAttractMode = React.useCallback(() => {
     setMuseumObjectState((prev) => ({
@@ -118,8 +119,18 @@ export default function AttractModeContent() {
 
       // Prevents slideout animation from happening on load when kiosk mode is false
       setFirstSlideDone(true);
+
+      // Enable focus trap after slide-in animation completes (1s delay)
+      const focusTrapTimer = setTimeout(() => {
+        setShouldEnableFocusTrap(true);
+      }, 1000);
+
+      return () => {
+        clearTimeout(focusTrapTimer);
+      };
     } else {
       setIsSlidingOut(true);
+      setShouldEnableFocusTrap(false);
 
       // Send GA Event showing that a user has started using the kiosk
       if (
