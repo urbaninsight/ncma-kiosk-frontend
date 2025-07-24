@@ -68,7 +68,7 @@ export default function AdditionalControls() {
       <LanguageButton />
 
       <button
-        className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange cloverSm:w-auto cloverSm:px-[18px]"
+        className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 cloverSm:w-auto cloverSm:px-[18px]"
         onPointerUp={onLearnMoreClick}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -86,7 +86,7 @@ export default function AdditionalControls() {
         <span className="hidden cloverSm:block">
           {translations[activeLanguage].learnMore}
         </span>
-        <span className="sr-only">
+        <span className="sr-only cloverSm:hidden">
           {translations[activeLanguage].learnMore}
         </span>
       </button>
@@ -94,7 +94,7 @@ export default function AdditionalControls() {
       {/* Fullscreen */}
       {!museumObjectState.kioskMode && (
         <button
-          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange cloverSm:w-auto cloverSm:px-[18px]"
+          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 cloverSm:w-auto cloverSm:px-[18px]"
           onPointerUp={onFullscreenClick}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
