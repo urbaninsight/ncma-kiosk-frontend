@@ -69,7 +69,6 @@ export default function AttractModeContent() {
     (event: Event) => {
       // Don't close attract mode if clicking or tabbing to the learn more or language buttons
       const target = event.target as HTMLElement;
-      console.log(target.closest(".additional-controls-button"));
       if (
         target.closest(".additional-controls-button") ||
         (attractModeActive &&
