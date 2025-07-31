@@ -6,8 +6,10 @@ import { useContext, useEffect, useState } from "react";
 import ExitFullscreenIcon from "../icons/exit-fullscreen";
 import FullscreenIcon from "../icons/fullscreen";
 import InfoSpeechBubbleIcon from "../icons/info-speech-bubble";
+import MetadataIcon from "../icons/metadata";
 import PinchToZoomIcon from "../icons/pinch-to-zoom";
 import LanguageButton from "../language-button/language-button";
+import MetadataModal from "../metadata-modal/metadata-modal";
 
 // These controls display next to the Clover Controls (e.g. zoom in, zoom out, home) and are meant to blend in with the Clover UI.
 export default function AdditionalControls() {
@@ -15,6 +17,7 @@ export default function AdditionalControls() {
     useContext(MuseumObjectContext);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMetadataModalOpen, setIsMetadataModalOpen] = useState(false);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -52,6 +55,12 @@ export default function AdditionalControls() {
     }
   };
 
+  const onMetadataClick = (event: any) => {
+    // Prevent event propagation to avoid any parent click handlers
+    event.stopPropagation();
+    setIsMetadataModalOpen(true);
+  };
+
   const { activeLanguage } = museumObjectState;
 
   return (
@@ -67,8 +76,9 @@ export default function AdditionalControls() {
 
       <LanguageButton />
 
+      {/* Learn More */}
       <button
-        className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 cloverSm:w-auto cloverSm:px-[18px]"
+        className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 lg:w-auto lg:px-[18px]"
         onPointerUp={onLearnMoreClick}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -77,24 +87,48 @@ export default function AdditionalControls() {
           }
         }}
       >
-        <span className="text-lg cloverSm:mr-4">
+        <span className="text-lg lg:mr-4">
           <InfoSpeechBubbleIcon
             className="h-5 w-5 fill-white group-hover:fill-ncmaOrange"
             fill="inherit"
           />
         </span>
-        <span className="hidden cloverSm:block">
+        <span className="hidden lg:block">
           {translations[activeLanguage].learnMore}
         </span>
-        <span className="sr-only cloverSm:hidden">
+        <span className="sr-only lg:hidden">
           {translations[activeLanguage].learnMore}
         </span>
       </button>
 
+      {/* Metadata */}
+      {!museumObjectState.kioskMode && museumObjectState.manifestData && (
+        <button
+          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 lg:w-auto lg:px-[18px]"
+          onPointerUp={onMetadataClick}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onMetadataClick(e);
+            }
+          }}
+        >
+          <span className="text-lg lg:mr-4">
+            <MetadataIcon className="h-5 w-5 stroke-white group-hover:stroke-ncmaOrange" />
+          </span>
+          <span className="hidden lg:block">
+            {translations[activeLanguage].metadata}
+          </span>
+          <span className="sr-only lg:hidden">
+            {translations[activeLanguage].metadata}
+          </span>
+        </button>
+      )}
+
       {/* Fullscreen */}
       {!museumObjectState.kioskMode && (
         <button
-          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 cloverSm:w-auto cloverSm:px-[18px]"
+          className="additional-controls-button w-max-content group flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 lg:w-auto lg:px-[18px]"
           onPointerUp={onFullscreenClick}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -103,25 +137,31 @@ export default function AdditionalControls() {
             }
           }}
         >
-          <span className="text-lg cloverSm:mr-4">
+          <span className="text-lg lg:mr-4">
             {isFullscreen ? (
               <ExitFullscreenIcon className="h-5 w-5 stroke-white group-hover:stroke-ncmaOrange" />
             ) : (
               <FullscreenIcon className="h-5 w-5 stroke-white group-hover:stroke-ncmaOrange" />
             )}
           </span>
-          <span className="hidden cloverSm:block">
+          <span className="hidden lg:block">
             {isFullscreen
               ? translations[activeLanguage].exitFullscreen
               : translations[activeLanguage].fullscreen}
           </span>
-          <span className="sr-only">
+          <span className="sr-only lg:hidden">
             {isFullscreen
               ? translations[activeLanguage].exitFullscreen
               : translations[activeLanguage].fullscreen}
           </span>
         </button>
       )}
+
+      {/* Metadata Modal */}
+      <MetadataModal
+        isOpen={isMetadataModalOpen}
+        onClose={() => setIsMetadataModalOpen(false)}
+      />
     </div>
   );
 }

@@ -110,7 +110,8 @@ body {
   box-shadow: black 0px 0px 8px 0px;
 }
 
-.additional-controls-button {
+.additional-controls-button,
+.additional-controls-button svg {
   box-shadow: black 0px 0px 8px 0px;
   transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }

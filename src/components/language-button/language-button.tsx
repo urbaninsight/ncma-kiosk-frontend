@@ -40,7 +40,7 @@ export default function LanguageButton() {
 
   return (
     <button
-      className="additional-controls-button flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 cloverSm:w-32"
+      className="additional-controls-button flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black px-[18px] py-[15px] text-white hover:border-ncmaOrange hover:bg-ncmaDarkOrange hover:text-ncmaOrange focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 lg:w-32"
       onPointerUp={onLanguageClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -49,8 +49,8 @@ export default function LanguageButton() {
         }
       }}
     >
-      <span className="hidden cloverSm:block">{languageButtonText}</span>
-      <span className="block uppercase cloverSm:hidden">
+      <span className="hidden lg:block">{languageButtonText}</span>
+      <span className="block uppercase lg:hidden">
         {mobileLanguageButtonText}
       </span>
     </button>
