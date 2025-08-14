@@ -173,7 +173,7 @@ export default function AttractModeContent() {
       {/* Content */}
       <div className="flex flex-col items-center justify-center gap-y-6">
         {/* Video + Text */}
-        <div className="mb-6 flex flex-row justify-center gap-x-8 px-[108px]">
+        <div className="mb-6 flex flex-row justify-center gap-x-8 px-10 md:px-[108px]">
           {/* Video */}
           {kioskMode && (
             <div className="flex flex-1 items-center overflow-hidden">
@@ -213,7 +213,7 @@ export default function AttractModeContent() {
 
         {/* User Instructions */}
 
-        <div className="flex animate-pulse flex-row items-center gap-x-4 text-3xl font-semibold leading-[100%]">
+        <div className="flex animate-pulse flex-row items-center gap-x-4 px-10 text-center text-3xl font-semibold leading-[100%]">
           {kioskMode && <HandTouchIcon className="h-28 w-28" />}
 
           <span aria-hidden="true">
