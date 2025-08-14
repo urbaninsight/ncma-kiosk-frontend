@@ -138,7 +138,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
               {manifestData.rights && (
                 <div className="border-b border-gray-400 pb-3 last:border-b-0">
                   <dt className="mb-1 text-sm font-bold text-gray-400">
-                    Rights
+                    {translations[activeLanguage].rights}
                   </dt>
                   <dd className="text-sm text-white">{manifestData.rights}</dd>
                 </div>
@@ -149,7 +149,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
                 <div className="border-b border-gray-400 pb-3 last:border-b-0">
                   <dt className="mb-1 flex items-center gap-2 text-sm font-bold text-gray-400">
                     <Image src={IIIFLogo} alt="IIIF Logo" className="h-4 w-4" />
-                    Manifest
+                    {translations[activeLanguage].manifest}
                   </dt>
                   <dd className="text-sm text-white">
                     <a

@@ -13,6 +13,8 @@ export const translations = {
     anywhereToExplore: "anywhere to explore",
     clickAnywhereToExploreScreenReader:
       "Click anywhere or press enter to explore",
+    rights: "Rights",
+    manifest: "Manifest",
   },
   es: {
     pinchToZoom: "Pellizcar para hacer zoom",
@@ -28,5 +30,7 @@ export const translations = {
     anywhereToExplore: "cualquier lugar para explorar",
     clickAnywhereToExploreScreenReader:
       "Haga clic en cualquier lugar o presione Enter para explorar",
+    rights: "Derechos",
+    manifest: "Manifiesto",
   },
 };
