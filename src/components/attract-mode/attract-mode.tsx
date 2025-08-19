@@ -191,7 +191,12 @@ export default function AttractModeContent() {
           {/* Text */}
           {!!manifestData?.label?.[activeLanguage]?.length &&
             !!manifestData?.summary?.[activeLanguage]?.length && (
-              <div className="flex flex-1">
+              <div
+                className={clsx(
+                  "flex flex-1",
+                  !kioskMode && "h-[300px] overflow-y-auto",
+                )}
+              >
                 <div>
                   <h1
                     className="z-[11] text-3xl font-semibold leading-[100%]"
