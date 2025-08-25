@@ -13,7 +13,8 @@ export const translations = {
     anywhereToExplore: "anywhere to explore",
     clickAnywhereToExploreScreenReader:
       "Click anywhere or press enter to explore",
-    rights: "Rights",
+    requiredStatement: "Credit Line",
+    rights: "Rights Statement",
     manifest: "Manifest",
   },
   es: {
@@ -30,7 +31,8 @@ export const translations = {
     anywhereToExplore: "cualquier lugar para explorar",
     clickAnywhereToExploreScreenReader:
       "Haga clic en cualquier lugar o presione Enter para explorar",
-    rights: "Derechos",
+    requiredStatement: "Línea de crédito",
+    rights: "Declaración de derechos",
     manifest: "Manifiesto",
   },
 };

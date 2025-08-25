@@ -125,8 +125,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
               {manifestData.requiredStatement && (
                 <div className="border-b border-gray-400 pb-3 last:border-b-0">
                   <dt className="mb-1 text-sm font-bold text-gray-400">
-                    {getLocalizedText(manifestData.requiredStatement.label) ||
-                      "Attribution"}
+                    {translations[activeLanguage].requiredStatement}
                   </dt>
                   <dd className="text-sm text-white">
                     {getLocalizedText(manifestData.requiredStatement.value)}
