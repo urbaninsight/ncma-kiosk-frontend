@@ -140,7 +140,16 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
                   <dt className="mb-1 text-sm font-bold text-gray-400">
                     {translations[activeLanguage].rights}
                   </dt>
-                  <dd className="text-sm text-white">{manifestData.rights}</dd>
+                  <dd className="text-sm text-white">
+                    <a
+                      href={manifestData.rights}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-all text-blue-600 underline hover:text-blue-800"
+                    >
+                      {manifestData.rights}
+                    </a>
+                  </dd>
                 </div>
               )}
 
