@@ -16,6 +16,8 @@ export const translations = {
     requiredStatement: "Credit Line",
     rights: "Rights Statement",
     manifest: "Manifest",
+    areYouStillViewing: "Are you still viewing?",
+    tapToContinue: "Tap anywhere to continue.",
   },
   es: {
     pinchToZoom: "Pellizcar para hacer zoom",
@@ -34,5 +36,7 @@ export const translations = {
     requiredStatement: "Línea de crédito",
     rights: "Declaración de derechos",
     manifest: "Manifiesto",
+    areYouStillViewing: "¿Sigues viendo?",
+    tapToContinue: "Toca en cualquier lugar para continuar.",
   },
 };
