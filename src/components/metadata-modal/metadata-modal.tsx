@@ -18,7 +18,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
   const { activeLanguage, manifestData } = museumObjectState;
   const modalRef = useFocusTrap(isOpen);
 
-  // Escape key and click outside handling
+  // Escape key handling
   useEffect(() => {
     if (!isOpen) return;
 
@@ -28,23 +28,12 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
       }
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        onClose();
-      }
-    };
-
     document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, onClose, modalRef]);
+  }, [isOpen, onClose]);
 
   // Helper function to get localized text
   const getLocalizedText = (text: any) => {
@@ -55,14 +44,23 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Scrim - absolutely positioned background that closes modal when clicked */}
+      <div
+        className="absolute inset-0 bg-black bg-opacity-75"
+        onClick={onClose}
+        aria-label="Close modal"
+      />
+
+      {/* Modal content */}
       <div
         ref={modalRef}
-        className="relative max-h-[80vh] w-[90vw] max-w-2xl overflow-hidden rounded-lg border-2 border-white bg-black shadow-xl"
+        className="relative z-10 max-h-[80vh] w-[90vw] max-w-2xl overflow-hidden rounded-lg border-2 border-white bg-black shadow-xl"
         role="dialog"
         aria-modal="true"
         aria-labelledby="metadata-modal-title"
         tabIndex={-1}
+        onClick={(e) => e.stopPropagation()} // Prevent clicks inside modal from closing it
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-400 px-6 py-4">
