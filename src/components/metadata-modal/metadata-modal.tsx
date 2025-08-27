@@ -90,7 +90,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
                 const label = getLocalizedText(item.label);
                 const value = getLocalizedText(item.value);
 
-                if (!label || !value) return null;
+                if (!label?.length || !value?.length) return null;
 
                 return (
                   <div
@@ -122,7 +122,8 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
               })}
 
               {/* Required Statement */}
-              {manifestData.requiredStatement && (
+              {!!manifestData?.requiredStatement?.value?.[activeLanguage]
+                ?.length && (
                 <div className="border-b border-gray-400 pb-3 last:border-b-0">
                   <dt className="mb-1 text-sm font-bold text-gray-400">
                     {translations[activeLanguage].requiredStatement}
@@ -134,7 +135,7 @@ export default function MetadataModal({ isOpen, onClose }: MetadataModalProps) {
               )}
 
               {/* Rights */}
-              {manifestData.rights && (
+              {!!manifestData?.rights?.length && (
                 <div className="border-b border-gray-400 pb-3 last:border-b-0">
                   <dt className="mb-1 text-sm font-bold text-gray-400">
                     {translations[activeLanguage].rights}
