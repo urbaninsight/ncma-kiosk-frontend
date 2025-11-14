@@ -23,7 +23,7 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.12",
+    "@cloudflare/next-on-pages": "1.13.12",
     "@cloudflare/workers-types": "^4.20250529.0",
     "@eslint/eslintrc": "^3",
     "@iiif/presentation-3": "^2.2.3",
