@@ -32,8 +32,16 @@ export default function MuseumObjectScreen({
     // Fetch manifest data and store it in context
     const iiifUrl = `/manifest?id=${annotatedImageId}`;
     const objectMetadataUrl = `/metadata?id=${annotatedImageId}`;
+    // NOTE: Uncomment for local dev:
+    // const iiifUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}/IIIF`;
+    // const objectMetadataUrl = `${process.env.NEXT_PUBLIC_DRUPAL_API_URL}/wp-json/ncma/v1/ncma-annotated-image/${annotatedImageId}`;
 
     try {
+      // NOTE: Uncomment for local dev:
+      // const credentials = btoa(
+      //   `${process.env.WP_API_UNAME}:${process.env.WP_API_PASS}`,
+      // );
+
       const fetchData = async () => {
         const [iiifResponseRaw, objectMetadataResponseRaw] = await Promise.all([
           fetch(iiifUrl, {
@@ -41,6 +49,10 @@ export default function MuseumObjectScreen({
           }),
           fetch(objectMetadataUrl, {
             method: "GET",
+            // NOTE: Uncomment for local dev:
+            // headers: {
+            //   Authorization: `Basic ${credentials}`,
+            // },
           }),
         ]);
         const [iiifResponse, objectMetadataResponse] = await Promise.all([
